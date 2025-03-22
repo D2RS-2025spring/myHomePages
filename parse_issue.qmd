@@ -1,16 +1,20 @@
 # 处理回复
 
-创建一个R脚本，用于从 GitHub Issue [#1]() 中提取回复，整理为表格，并对内容中的链接生成网页截图。
+创建一个R脚本，用于从 GitHub Issue [#1](https://github.com/D2RS-2025spring/myHomePages/issues/1) 中提取回复，整理为表格，并对内容中的链接生成网页截图。
+
+## 准备工作
+
+首先，我们需要安装并加载一些必要的R包，包括 `gh`、`webshot2`、`dplyr`、`stringr`、`tibble`、`httr` 和 `jsonlite`。如果你尚未安装这些包，可以运行以下代码来安装它们：
 
 ```{r}
 # 安装必要的包（如果尚未安装）
-if (!require("gh")) install.packages("gh")
-if (!require("webshot2")) install.packages("webshot2")
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("stringr")) install.packages("stringr")
-if (!require("tibble")) install.packages("tibble")
-if (!require("httr")) install.packages("httr")
-if (!require("jsonlite")) install.packages("jsonlite")
+if (!require("gh", quietly = TRUE)) install.packages("gh")
+if (!require("webshot2", quietly = TRUE)) install.packages("webshot2")
+if (!require("dplyr", quietly = TRUE)) install.packages("dplyr")
+if (!require("stringr", quietly = TRUE)) install.packages("stringr")
+if (!require("tibble", quietly = TRUE)) install.packages("tibble")
+if (!require("httr", quietly = TRUE)) install.packages("httr")
+if (!require("jsonlite", quietly = TRUE)) install.packages("jsonlite")
 
 # 加载包
 library(gh)
@@ -27,6 +31,23 @@ if (!dir.exists("webshot")) {
 }
 ```
 
+这些包的作用如下：
+
+* `gh`：用于访问 GitHub API
+* `webshot2`：用于生成网页截图
+* `dplyr`：用于数据处理
+* `stringr`：用于字符串处理
+* `tibble`：用于创建数据框
+* `httr`：用于发起 HTTP 请求
+* `jsonlite`：用于处理 JSON 数据
+
+## 获取评论
+
+接下来，我们将使用 GitHub API 获取指定仓库的 Issue #1 的所有评论。
+
+首先，将以下代码中的 `repo_owner`、`repo_name` 和 `issue_number` 替换为要爬取的仓库和 Issue 编号：
+
+
 ```{r}
 # 指定仓库和Issue编号
 # 请替换为你需要爬取的仓库
@@ -39,8 +60,19 @@ issue_comments <- gh::gh(
   "GET /repos/{owner}/{repo}/issues/{issue_number}/comments",
   owner = repo_owner,
   repo = repo_name,
-  issue_number = issue_number
+  issue_number = issue_number,
+  .limit = Inf
 )
+```
+
+在这里使用 `.limit = Inf` 来获取所有评论，如果评论数量较多，可能需要等待一段时间。
+
+## 打印原始 Issue 内容
+
+在获取 ISSUE comments 的方法中，并不会包含第一条的评论（即 Issue 的标题和内容），所以我们需要单独获取 Issue 的标题和内容，打印原始 Issue 的标题和内容，以便了解 Issue 的背景信息。
+
+```{r}
+# 打印原始issue内容
 
 # 获取原始issue内容
 issue_data <- gh::gh(
@@ -49,50 +81,78 @@ issue_data <- gh::gh(
   repo = repo_name,
   issue_number = issue_number
 )
+
+cli::cat_rule("原始Issue内容")
+cat(issue_data$title, "\n")
+cat(issue_data$body, "\n")
 ```
 
+## 整理评论
+
+利用 `lapply` 函数将评论整理为一个列表，然后使用 `bind_rows` 函数将列表转换为 tibble，方便后续处理。
+
 ```{r}
-```
-
-
-```{r}
-# 创建一个空的数据框来存储评论
-comments_df <- tibble(
-  author = character(),
-  content = character(),
-  time = character(),
-  links = list(),
-  screenshot_paths = list()
-)
-
-# 添加原始issue作为第一条评论
-comments_df <- comments_df %>%
-  add_row(
-    author = issue_data$user$login,
-    content = issue_data$body,
-    time = as.character(as.POSIXct(issue_data$created_at, format="%Y-%m-%dT%H:%M:%SZ", tz="UTC")),
-    links = list(character()),
-    screenshot_paths = list(character())
+# 创建一个列表来存储评论信息
+comments_list = lapply(issue_comments, function(comment) {
+  tibble(
+    author = comment$user$login,
+    content = comment$body,
+    content_url = comment$html_url,
+    time = comment$created_at,
+    id = NA,
+    links = NA,
+    screenshot_paths = NA
   )
+})
 
-# 处理所有评论
-for (comment in issue_comments) {
-  # 提取评论信息
-  author <- comment$user$login
-  content <- comment$body
-  time <- as.character(as.POSIXct(comment$created_at, format="%Y-%m-%dT%H:%M:%SZ", tz="UTC"))
-  
-  # 添加到数据框
-  comments_df <- comments_df %>%
-    add_row(
-      author = author,
-      content = content,
-      time = time,
-      links = list(character()),
-      screenshot_paths = list(character())
-    )
-}
+# 将列表转换为 tibble
+comments_df = bind_rows(comments_list)
+
+comments_df
 ```
+
+`comments_df` 是一个数据框，包含了评论的作者、内容、评论链接和时间。
+
+## 提取评论中的学号
+
+从评论内容中提取学号。这里使用了正则表达式来匹配学号，然后将提取的学号保存到数据框中。
+
+这里使用的正则表达式为 `(?<!\\d)\\d{13}(?!\\d)`，可以匹配 13 位数字，前后不是数字的情况。其中 `(?<!\\d)` 表示前面不是数字，`\\d{13}` 表示匹配 13 位数字，`(?!\\d)` 表示后面不是数字。
+
+```{r}
+# 提取每条评论中的学号
+for (i in 1:nrow(comments_df)) {
+  # 使用正则表达式提取学号
+  # 这个模式可以匹配学号
+  id_pattern <- "(?<!\\d)\\d{13}(?!\\d)"
+  matches <- str_extract_all(comments_df$content[i], id_pattern)[[1]]
+  matches <- unique(matches)
+  id <- NA
+  if (length(matches) < 1) {
+    # 如果没有匹配，打印警告
+    warning(glue::glue("评论 {i} 中未检测到学号: {comments_df$content[i]}"))
+  } else if (length(matches) > 1) {
+    # 如果有多个匹配，只取第一个
+    id <- matches[1]
+    message(glue::glue("评论 {i} 中有多个学号匹配: `{comments_df$content[i]}`。只取第一个: {id}"))
+  } else {
+    # 如果只有一个匹配，直接取出
+    id = matches[1]
+  }
+  # 更新数据框
+  comments_df$id[[i]]<- id
+}
+
+# 检查学号提取是否正确
+comments_df
+```
+
+
+## 提取评论中的链接
+
+从评论内容中提取可用的链接。这里使用了正则表达式来匹配链接，包括 Markdown 风格的链接和直接 URL。然后将提取的链接保存到数据框中。
+
+这里使用的正则表达式为 `https?://[^\\s()<>\"\\[\\]]+|\\(https?://[^\\s()<>\"\\[\\]]+\\)|\\[.*?\\]\\(https?://[^\\s()<>\"\\[\\]]+\\)`，可以匹配 Markdown 风格的链接和直接 URL。其中，`https?://[^\\s()<>\"\\[\\]]+` 匹配直接 URL，`\\(https?://[^\\s()<>\"\\[\\]]+\\)` 匹配圆括号中的链接，`\\[.*?\\]\\(https?://[^\\s()<>\"\\[\\]]+\\)` 匹配 Markdown 风格的链接。
 
 ```{r}
 # 提取每条评论中的链接
@@ -125,8 +185,31 @@ for (i in 1:nrow(comments_df)) {
   valid_links <- cleaned_links[str_detect(cleaned_links, "^https?://")]
   
   # 更新数据框
-  comments_df$links[[i]] <- valid_links
+  comments_df$links[i] <- list(valid_links)
   
+}
+```
+
+
+检查链接提取是否正确，并打印出每条评论中的内容。
+
+```{r}
+# 没有提取到链接的评论链接
+comments_df |> 
+    rowwise() |>
+    filter(length(links) == 0) |>
+    select(author, content)
+```
+
+
+## 生成网页截图
+
+使用 `webshot2` 包生成评论中的链接的网页截图，并将截图保存到 `webshot` 文件夹中。然后将截图的文件路径添加到数据框中。
+
+```{r}
+# 使用webshot2包生成网页截图
+for (i in 1:nrow(comments_df)) {
+  valid_links <- comments_df$links[[i]]
   # 准备保存截图路径
   screenshot_paths <- character()
   
@@ -140,35 +223,45 @@ for (i in 1:nrow(comments_df)) {
                                str_replace_all(gsub("https?://", "", link), "[^a-zA-Z0-9]", "_"), 
                                ".png")
       
+      # 如果文件已经存在，跳过
+        if (file.exists(safe_filename) & file.size(safe_filename) > 1000) {
+            message(sprintf("跳过截图: %s (文件已存在)\n", link))
+            screenshot_paths <- c(screenshot_paths, safe_filename)
+            next
+        }
+      
       # 尝试截图
       tryCatch({
         webshot2::webshot(url = link, 
                           file = safe_filename, 
                           delay = 5)
         screenshot_paths <- c(screenshot_paths, safe_filename)
-        cat(sprintf("成功截图: %s\n", link))
+        # message(sprintf("成功截图: %s\n", link))
       }, error = function(e) {
-        cat(sprintf("截图失败: %s, 错误: %s\n", link, e$message))
+        warning(sprintf("截图失败: %s, 错误: %s\n", link, e$message))
         screenshot_paths <- c(screenshot_paths, NA)
       })
     }
   }
   
   # 更新截图路径
-  comments_df$screenshot_paths[[i]] <- screenshot_paths
+  comments_df$screenshot_paths[[i]] <- list(screenshot_paths)
 }
-
-# 创建最终的数据框，将链接和截图路径合并为字符串
-final_df <- comments_df %>%
-  mutate(
-    links_str = sapply(links, function(x) paste(x, collapse = "\n")),
-    screenshots_str = sapply(screenshot_paths, function(x) paste(x, collapse = "\n"))
-  ) %>%
-  select(author, content, time, links_str, screenshots_str) %>%
-  rename(links = links_str, screenshot_paths = screenshots_str)
 ```
 
+
+## 保存结果
+
+最后，将整理好的评论数据保存为CSV文件，并输出处理结果。对于存在多个链接的评论（有些同学提交了多个版本），将多个链接用分号分隔，合并为一个评论。
+
 ```{r}
+# 将 list 转换为字符向量
+final_df <- comments_df %>%
+  mutate(
+    links = sapply(links, function(x) paste(x, collapse = "; ")),
+    screenshot_paths = sapply(screenshot_paths, function(x) paste(x, collapse = "; "))
+  )
+
 # 保存结果到CSV
 write.csv(final_df, "github_issue_comments.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
@@ -178,24 +271,18 @@ cat("结果已保存到 github_issue_comments.csv\n")
 print(final_df)
 ```
 
-脚本说明
-这个R脚本会完成以下任务：
 
-安装并加载必要的R包
-创建一个webshot文件夹用于保存网页截图
-从GitHub API获取Issue #1的内容和所有评论
-将评论整理成一个表格，包含author、content和time列
-从评论内容中提取所有链接
-使用webshot2包访问链接并生成网页截图
-将截图保存在webshot文件夹中
-将截图的文件路径添加到表格中
-将结果保存为CSV文件
-使用方法
-将代码保存为github_issue_parser.R
-修改代码中的repo_owner和repo_name变量，设置为你要爬取的GitHub仓库
-运行脚本
-注意：
+## 小结
 
-使用此脚本需要安装Chrome或Chromium浏览器，因为webshot2包依赖它来生成截图
-对于私有仓库，你可能需要设置GitHub Personal Access Token
-如果遇到API速率限制，可能需要增加等待时间或减少请求频率
+
+这个 R 脚本会完成以下任务：
+
+* 安装并加载必要的R包
+* 创建一个 webshot 文件夹用于保存网页截图
+* 从 GitHub API 获取 Issue #1 的内容和所有评论
+* 将评论整理成一个表格，包含 `author`、`content` 和 `time` 列等
+* 从评论内容中提取所有链接和学号
+* 使用 `webshot2` 包访问链接并生成网页截图
+* 将截图保存在 `webshot` 文件夹中
+* 将截图的文件路径添加到表格中
+* 将结果保存为CSV文件
