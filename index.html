@@ -1,0 +1,2958 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>网页秀</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">网页秀</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#网页秀" id="toc-网页秀" class="nav-link active" data-scroll-target="#网页秀">网页秀</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="网页秀" class="level1">
+<h1>网页秀</h1>
+<p>创建网页截图，并展示在网页上。</p>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 300px;
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 5em;
+    max-width: 1200px;
+    margin: 5em auto 0 auto;
+  }
+  .grid-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* 修改这里 */
+    object-position: top; /* 修改这里 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+  }
+  .grid-item img:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大图片 */
+  }
+  .grid-item a {
+    text-decoration: none; /* 移除默认下划线 */
+    color: #333; /* 设置字体颜色 */
+    font-weight: 600; /* 设置字体粗细 */
+    transition: color 0.3s ease; /* 添加颜色过渡效果 */
+  }
+  .grid-item a:hover {
+    color: #007bff; /* 鼠标悬停时改变字体颜色 */
+    margin-top: 0; /* 移除默认的外边距 */
+    margin-bottom: 1em; /* 添加底部外边距 */
+  }
+  .floating-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1px;
+    text-align: center;
+    z-index: 1000;
+  }
+</style>
+
+<div class="grid-container">
+  <div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729394900">
+    <strong>mortalccookiee</strong>
+  </a>
+  <a href="https://mortalccookiee.github.io/webpage/">
+    <img src="www/webshot/mortalccookiee_github_io_webpage_.png" alt="[12-2024303120153](https://mortalccookiee.github.io/webpage/)
+这是我第一次学习如何编译并上传自己的网站到github中
+[12-2024303120153](https://mortalccookiee.github.io/webpage2/)
+这个是我的第二个自己搭建的github网站，使用到了github Copilot ai帮我编写并上传到github，在vscode中配置好可以一键上传，只需要上传完成之后输入quarto publish gh-pages即可，如果有同学想学习如何在vscode中配置github，请参考下面这网站，这个up主讲的很好(https://www.bilibili.com/video/BV1Hkr7YYEh8/?spm_id_from=333.1387.favlist.content.click)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729600854">
+    <strong>MKS-1120</strong>
+  </a>
+  <a href="https://mks-1120.github.io/-/">
+    <img src="www/webshot/mks_1120_github_io___.png" alt="[24-2024303110042](https://mks-1120.github.io/-/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729605028">
+    <strong>Lvicky13</strong>
+  </a>
+  <a href="https://lvicky13.github.io/homepage/">
+    <img src="www/webshot/lvicky13_github_io_homepage_.png" alt="[24-2024303110056](https://lvicky13.github.io/homepage/)
+第一次接触并掌握了：创建和管理仓库、上传文件 / 版本控制、使用 Issue、Settings 等界面功能、GitHub Pages 的部署机制">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729629131">
+    <strong>songllan</strong>
+  </a>
+  <a href="https://songllan.github.io/wangyulanweb/">
+    <img src="www/webshot/songllan_github_io_wangyulanweb_.png" alt="[26-2024303110069](https://songllan.github.io/wangyulanweb/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729631761">
+    <strong>songllan</strong>
+  </a>
+  <a href="https://songllan.github.io/wangyulanweb/">
+    <img src="www/webshot/songllan_github_io_wangyulanweb_.png" alt="[26-2024303110069](https://songllan.github.io/wangyulanweb/)
+###第一次提交，上传">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729650802">
+    <strong>huaarui</strong>
+  </a>
+  <a href="https://huaarui.github.io/Data-Driven/">
+    <img src="www/webshot/huaarui_github_io_Data_Driven_.png" alt="[10-2024303120168](https://huaarui.github.io/Data-Driven/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729678869">
+    <strong>songllan</strong>
+  </a>
+  <a href="https://songllan.github.io/wangyulanweb/">
+    <img src="www/webshot/songllan_github_io_wangyulanweb_.png" alt="[26-2024303110069](https://songllan.github.io/wangyulanweb/)
+王雨兰提交
+使用HTML构建网页结构，CSS美化样式，JavaScript添加交互功能，超链接实现页面内跳转。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729796680">
+    <strong>AlcottGiovanna</strong>
+  </a>
+  <a href="https://alcottgiovanna.github.io/HOMEPAGES/">
+    <img src="www/webshot/alcottgiovanna_github_io_HOMEPAGES_.png" alt="[24-2024303110029](https://alcottgiovanna.github.io/HOMEPAGES/)
+使用Cline自动编写个人简介网站并美化界面，手动添加 <p>邮箱：<a href=&quot; &quot;>17602981211@163.com</a ></p >，使得生成邮箱链接，最后上传至github仓库并使用pages 的功能来托管静态网站。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729880612">
+    <strong>YNlT</strong>
+  </a>
+  <a href="https://ynlt.github.io/myhomepage/">
+    <img src="www/webshot/ynlt_github_io_myhomepage_.png" alt="[12-2024303120156](https://ynlt.github.io/myhomepage/)
+杨晨提交
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2729912780">
+    <strong>muqiyan</strong>
+  </a>
+  <a href="https://muqiyan.github.io/muqiyanweb/">
+    <img src="www/webshot/muqiyan_github_io_muqiyanweb_.png" alt="[26-2024303110003](https://muqiyan.github.io/muqiyanweb/)
+慕淇燕提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2731568644">
+    <strong>6-NanCheng</strong>
+  </a>
+  <a href="https://6-nancheng.github.io/create-web/">
+    <img src="www/webshot/6_nancheng_github_io_create_web_.png" alt="[28-2024303110080](https://6-nancheng.github.io/create-web/)
+黄俊豪作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2731762346">
+    <strong>sas12-bot</strong>
+  </a>
+  <a href="https://zaochuan610.github.io/">
+    <img src="www/webshot/zaochuan610_github_io_.png" alt="[24-2024303120003](https://zaochuan610.github.io/)
+这是我的第一个个人网站
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2731889965">
+    <strong>lmc157311</strong>
+  </a>
+  <a href="https://lmc157311.github.io/">
+    <img src="www/webshot/lmc157311_github_io_.png" alt="[28-2024303110085](https://lmc157311.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2731893631">
+    <strong>vidool</strong>
+  </a>
+  <a href="https://vidool.github.io/onepageresume/">
+    <img src="www/webshot/vidool_github_io_onepageresume_.png" alt="[15-2024303120147](https://vidool.github.io/onepageresume/)
+余伟东作业提交
+使用VSCode+Cline，调用Google Gemini API生成个人简历。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2731989906">
+    <strong>Z88-ZMQ</strong>
+  </a>
+  <a href="https://z88-zmq.github.io/33-2024303120023/">
+    <img src="www/webshot/z88_zmq_github_io_33_2024303120023_.png" alt="[33-2024303120013](https://z88-zmq.github.io/33-2024303120023/)张梦琪提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2731993038">
+    <strong>2024303110046</strong>
+  </a>
+  <a href="https://2024303110046.github.io/zhengxin.github/">
+    <img src="www/webshot/2024303110046_github_io_zhengxin_github_.png" alt="[05-2024303110046](https://2024303110046.github.io/zhengxin.github/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2732034342">
+    <strong>unrestraint1</strong>
+  </a>
+  <a href="https://unrestraint1.github.io/resume/">
+    <img src="www/webshot/unrestraint1_github_io_resume_.png" alt="[22-2024303120157](https://unrestraint1.github.io/resume/)
+王明旭提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2732283769">
+    <strong>ZhuzhPhloem</strong>
+  </a>
+  <a href="https://zhuzhphloem.github.io/homepage/">
+    <img src="www/webshot/zhuzhphloem_github_io_homepage_.png" alt="[02-2024303120089](https://zhuzhphloem.github.io/homepage/)朱震昊个人简历作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2732643465">
+    <strong>cheng-xubo</strong>
+  </a>
+  <a href="https://cheng-xubo.github.io/home/">
+    <img src="www/webshot/cheng_xubo_github_io_home_.png" alt="[02-2024303120113](https://cheng-xubo.github.io/home/)程旭波">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2732864324">
+    <strong>Liting-shu</strong>
+  </a>
+  <a href="https://liting-shu.github.io/litingshu/">
+    <img src="www/webshot/liting_shu_github_io_litingshu_.png" alt="[28-2024303120092](https://liting-shu.github.io/litingshu/)
+这是一个简易的个人网站">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2732907047">
+    <strong>BenLester16</strong>
+  </a>
+  <a href="https://benlester16.github.io/lesailiu417.github.io/">
+    <img src="www/webshot/benlester16_github_io_lesailiu417_github_io_.png" alt="> [07-2024303110065](https://benlester16.github.io/lesailiu417.github.io/)
+
+> 24土壤学李斌
+
+> 静态简历运用了HTML、CSS和JavaScript等以及结合响应式设计和交互效果，通过Bootstrap框架布局，利用jQuery、Fancybox等库增强功能，实现网页应用。
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2732921943">
+    <strong>jayzky</strong>
+  </a>
+  <a href="https://jayzky.github.io/Github-collaborate-homework/">
+    <img src="www/webshot/jayzky_github_io_Github_collaborate_homework_.png" alt="[12-2024303120155](https://jayzky.github.io/Github-collaborate-homework/)
+张阔 加入了一些简单的前端要素
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733050561">
+    <strong>NTThome</strong>
+  </a>
+  <a href="https://ntthome.github.io/homepage/">
+    <img src="www/webshot/ntthome_github_io_homepage_.png" alt="[02-2024303110098](https://ntthome.github.io/homepage/)牛彤彤">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733106387">
+    <strong>chentaishuai</strong>
+  </a>
+  <a href="https://chentaishuai.github.io/home/">
+    <img src="www/webshot/chentaishuai_github_io_home_.png" alt="[02-2024303120138](https://chentaishuai.github.io/home/)陈明悦">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733141631">
+    <strong>77-cute</strong>
+  </a>
+  <a href="https://77-cute.github.io/WQ2/">
+    <img src="www/webshot/77_cute_github_io_WQ2_.png" alt="[33-2024303120031](https://77-cute.github.io/WQ2/)WQ提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733161617">
+    <strong>Carolineno</strong>
+  </a>
+  <a href="https://carolineno.github.io/home/">
+    <img src="www/webshot/carolineno_github_io_home_.png" alt="[02-2024303120064](https://carolineno.github.io/home/)吕佳宇AAA">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733292306">
+    <strong>Liuhai626</strong>
+  </a>
+  <a href="https://liuhai626.github.io/my/">
+    <img src="www/webshot/liuhai626_github_io_my_.png" alt="[11-2024303110108](https://liuhai626.github.io/my/)刘海提交，上面展示了我的个人履历以及我的六张摄影作品，网站末尾有我的邮箱联系方式">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733363464">
+    <strong>Wang-CJ688</strong>
+  </a>
+  <a href="https://wang-cj688.github.io/homepage/">
+    <img src="www/webshot/wang_cj688_github_io_homepage_.png" alt="[01-2024303120111](https://wang-cj688.github.io/homepage/) 王超杰提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733568093">
+    <strong>lixinaaaaaa</strong>
+  </a>
+  <a href="https://lixinaaaaaa.github.io/myweb/">
+    <img src="www/webshot/lixinaaaaaa_github_io_myweb_.png" alt="[20-2024303120020](https://lixinaaaaaa.github.io/myweb/)李鑫提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733644779">
+    <strong>aidenlee157</strong>
+  </a>
+  <a href="https://aidenlee157.github.io/home123/">
+    <img src="www/webshot/aidenlee157_github_io_home123_.png" alt="[22-2024303110130](https://aidenlee157.github.io/home123/)李健章提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2733902582">
+    <strong>xiao666-Star</strong>
+  </a>
+  <a href="https://xiao666-star.github.io/xiao/">
+    <img src="www/webshot/xiao666_star_github_io_xiao_.png" alt="[29-2024303110073](https://xiao666-star.github.io/xiao/)提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735045275">
+    <strong>xiaoziling24</strong>
+  </a>
+  <a href="http://xiaoziling24.github.io/homepage/">
+    <img src="www/webshot/xiaoziling24_github_io_homepage_.png" alt="[08-2024303110053](http://xiaoziling24.github.io/homepage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735086781">
+    <strong>GG10BOND</strong>
+  </a>
+  <a href="https://gg10bond.github.io/home/">
+    <img src="www/webshot/gg10bond_github_io_home_.png" alt="[19-2024303120068](https://gg10bond.github.io/home/)周静康提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735157356">
+    <strong>maixiantao</strong>
+  </a>
+  <a href="https://maixiantao.github.io/home/">
+    <img src="www/webshot/maixiantao_github_io_home_.png" alt="[02-2024303120145](https://maixiantao.github.io/home/)麦贤滔作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735189785">
+    <strong>zhangyuandorr</strong>
+  </a>
+  <a href="https://zhangyuandorr.github.io/homepage/">
+    <img src="www/webshot/zhangyuandorr_github_io_homepage_.png" alt="[01-2024303120081](https://zhangyuandorr.github.io/homepage/)张苑">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735191049">
+    <strong>kyrie831</strong>
+  </a>
+  <a href="https://kyrie831.github.io/home/">
+    <img src="www/webshot/kyrie831_github_io_home_.png" alt="[02-2024303120117](https://kyrie831.github.io/home/)翟翊羽">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735192459">
+    <strong>xixi123-gif</strong>
+  </a>
+  <a href="https://xixi123-gif.github.io/myself/">
+    <img src="www/webshot/xixi123_gif_github_io_myself_.png" alt="[01-2024303110084](https://xixi123-gif.github.io/myself/)刘晓鸽">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735213104">
+    <strong>llffgihnmnb</strong>
+  </a>
+  <a href="https://llffgihnmnb.github.io/-/">
+    <img src="www/webshot/llffgihnmnb_github_io___.png" alt="[05-2024303120018](https://llffgihnmnb.github.io/-/) 李兰凤">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735228198">
+    <strong>xx778</strong>
+  </a>
+  <a href="https://xx778.github.io/home/">
+    <img src="www/webshot/xx778_github_io_home_.png" alt="[13-2024303120094](https://xx778.github.io/home/ )李炫萱">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735240004">
+    <strong>zrthuihb</strong>
+  </a>
+  <a href="https://zrthuihb.github.io/Zhao-rongt/">
+    <img src="www/webshot/zrthuihb_github_io_Zhao_rongt_.png" alt="[05-2024303120040](https://zrthuihb.github.io/Zhao-rongt/)赵荣腾">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735325558">
+    <strong>Xinke-dot</strong>
+  </a>
+  <a href="https://xinke-dot.github.io/Xin.github.io/">
+    <img src="www/webshot/xinke_dot_github_io_Xin_github_io_.png" alt="[05-2024303120042](https://xinke-dot.github.io/Xin.github.io/)辛可">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735330481">
+    <strong>MXY-star</strong>
+  </a>
+  <a href="https://mxy-star.github.io/ABC.github.io/">
+    <img src="www/webshot/mxy_star_github_io_ABC_github_io_.png" alt="[05-2024303120009](https://mxy-star.github.io/ABC.github.io/)孟芯怡">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735397586">
+    <strong>wsygxyl</strong>
+  </a>
+  <a href="https://wsygxyl.github.io/homepage/">
+    <img src="www/webshot/wsygxyl_github_io_homepage_.png" alt="[05-2024303120005](https://wsygxyl.github.io/homepage/)刘英杰
+
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735571043">
+    <strong>zjysll</strong>
+  </a>
+  <a href="https://zjysll.github.io/zjy/">
+    <img src="www/webshot/zjysll_github_io_zjy_.png" alt="[05-2024303120036]( https://zjysll.github.io/zjy/)祝婧怡">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735695782">
+    <strong>YanWanYing</strong>
+  </a>
+  <a href="https://yanwanying.github.io/resume/">
+    <img src="www/webshot/yanwanying_github_io_resume_.png" alt="[22-2024303110126](https://yanwanying.github.io/resume/)
+严婉莹提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735727660">
+    <strong>wxq-xqw</strong>
+  </a>
+  <a href="https://wxq-xqw.github.io/123/">
+    <img src="www/webshot/wxq_xqw_github_io_123_.png" alt="[22-2024303110012](https://wxq-xqw.github.io/123/)
+王小倩提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735745711">
+    <strong>ydk-123</strong>
+  </a>
+  <a href="https://ydk-123.github.io/ydk/">
+    <img src="www/webshot/ydk_123_github_io_ydk_.png" alt="[22-2024303110006](https://ydk-123.github.io/ydk/)
+杨德堃提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735756278">
+    <strong>orone5</strong>
+  </a>
+  <a href="https://orone5.github.io/Resume-website/">
+    <img src="www/webshot/orone5_github_io_Resume_website_.png" alt="[4-2024303110121](https://orone5.github.io/Resume-website/) 苏俊如提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735774598">
+    <strong>Tricky-0007</strong>
+  </a>
+  <a href="https://tricky-0007.github.io/home/">
+    <img src="www/webshot/tricky_0007_github_io_home_.png" alt="[21-2024303110131](https://tricky-0007.github.io/home/) 欧阳思欣">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735783743">
+    <strong>tangjiaxin-web</strong>
+  </a>
+  <a href="https://tangjiaxin-web.github.io/123/">
+    <img src="www/webshot/tangjiaxin_web_github_io_123_.png" alt="[22-2024303110132]( https://tangjiaxin-web.github.io/123/)
+汤佳欣">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735801013">
+    <strong>wwh333</strong>
+  </a>
+  <a href="https://wwh333.github.io/homepage/">
+    <img src="www/webshot/wwh333_github_io_homepage_.png" alt="[08-2024303110038](https://wwh333.github.io/homepage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735827932">
+    <strong>dengjun667</strong>
+  </a>
+  <a href="https://dengjun667.github.io/123/">
+    <img src="www/webshot/dengjun667_github_io_123_.png" alt="[22-2024303110017](https://dengjun667.github.io/123/)
+邓钧提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735835394">
+    <strong>notlikepear</strong>
+  </a>
+  <a href="https://notlikepear.github.io/home/">
+    <img src="www/webshot/notlikepear_github_io_home_.png" alt="[21-2024303120002](https://notlikepear.github.io/home/)  余小艺提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735919476">
+    <strong>14hg-D</strong>
+  </a>
+  <a href="https://14hg-d.github.io/14hg/">
+    <img src="www/webshot/14hg_d_github_io_14hg_.png" alt="
+> `[23-2024303110045](https://14hg-d.github.io/14hg/)
+邓旭鹏作业提交
+
+
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2735952050">
+    <strong>xmaql</strong>
+  </a>
+  <a href="https://xmaql.github.io/homepage/">
+    <img src="www/webshot/xmaql_github_io_homepage_.png" alt="[32-2024303110122](https://xmaql.github.io/homepage/ )
+许敏敏作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736282734">
+    <strong>Ffffffai</strong>
+  </a>
+  <a href="https://ffffffai.github.io/create-web/">
+    <img src="www/webshot/ffffffai_github_io_create_web_.png" alt="[28-2024303110067](https://ffffffai.github.io/create-web/)沈兵飞作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736290006">
+    <strong>yuyuyuyuyu222</strong>
+  </a>
+  <a href="https://yuyuyuyuyu222.github.io/create-web/">
+    <img src="www/webshot/yuyuyuyuyu222_github_io_create_web_.png" alt="[18-2024303110082]( https://yuyuyuyuyu222.github.io/create-web/)
+余晓雯提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736443043">
+    <strong>Blue-sir-1</strong>
+  </a>
+  <a href="https://blue-sir-1.github.io/123/">
+    <img src="www/webshot/blue_sir_1_github_io_123_.png" alt="[22-2024303120125]( https://blue-sir-1.github.io/123/)
+谭司璐提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736571490">
+    <strong>shupian123</strong>
+  </a>
+  <a href="https://shupian123.github.io/123/">
+    <img src="www/webshot/shupian123_github_io_123_.png" alt="[21-2024303120148](https://shupian123.github.io/123/)  冯巳平提交作业
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736581896">
+    <strong>guo101-ux</strong>
+  </a>
+  <a href="https://guo101-ux.github.io/create-web/">
+    <img src="www/webshot/guo101_ux_github_io_create_web_.png" alt="[18-2024303110077](https://guo101-ux.github.io/create-web/)
+郭旭龙提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736592801">
+    <strong>Songjia12</strong>
+  </a>
+  <a href="https://songjia12.github.io/jianjie/">
+    <img src="www/webshot/songjia12_github_io_jianjie_.png" alt="[04-2024303110112](https://songjia12.github.io/jianjie/)
+第一次使用VSCode软件，cline插件生成个人简历网页
+[04-2024303110112](https://songjia12.github.io/my-website/)
+第二次使用chatgpt生成了一个团队介绍网站，并加入一些按钮链接">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736712034">
+    <strong>Emmadev475</strong>
+  </a>
+  <a href="https://emmadev475.github.io/homepage/">
+    <img src="www/webshot/emmadev475_github_io_homepage_.png" alt="[17-2024303120146](https://emmadev475.github.io/homepage/)龚欣瑶">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736818030">
+    <strong>eybb25</strong>
+  </a>
+  <a href="https://eybb25.github.io/home/">
+    <img src="www/webshot/eybb25_github_io_home_.png" alt="[26-2024303120123](https://eybb25.github.io/home/)褚子康">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736852381">
+    <strong>R-yf</strong>
+  </a>
+  <a href="https://r-yf.github.io/ff/">
+    <img src="www/webshot/r_yf_github_io_ff_.png" alt="[18-2024303110081](https://r-yf.github.io/ff/)任玉芳">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736925463">
+    <strong>hexinyu917</strong>
+  </a>
+  <a href="https://hexinyu917.github.io/Hexinyu917-homepage/">
+    <img src="www/webshot/hexinyu917_github_io_Hexinyu917_homepage_.png" alt="[08-2024303120039](https://hexinyu917.github.io/Hexinyu917-homepage/)贺心雨">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736926726">
+    <strong>Zouliii</strong>
+  </a>
+  <a href="https://zouliii.github.io/Zoulii/">
+    <img src="www/webshot/zouliii_github_io_Zoulii_.png" alt="[08-2024303120043](https://zouliii.github.io/Zoulii/)
+邹丽">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2736950173">
+    <strong>chenxiuying123</strong>
+  </a>
+  <a href="https://chenxiuying123.github.io/cxy/">
+    <img src="www/webshot/chenxiuying123_github_io_cxy_.png" alt="[29-2024303120139](https://chenxiuying123.github.io/cxy/)陈秀颖">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2737044935">
+    <strong>eatch16</strong>
+  </a>
+  <a href="https://eatch16.github.io/Homework/">
+    <img src="www/webshot/eatch16_github_io_Homework_.png" alt="[30-2024303110009]( https://eatch16.github.io/Homework/)
+
+问下位于分支的html文件到底是否可以配置github pages站点，试了很多次都没用，最后是将文件复制到main才可行">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2738840807">
+    <strong>1778-ctrl</strong>
+  </a>
+  <a href="https://1778-ctrl.github.io/home/">
+    <img src="www/webshot/1778_ctrl_github_io_home_.png" alt="[19-2024303120067](https://1778-ctrl.github.io/home/) 周小燕提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2738857434">
+    <strong>Wushanzhi</strong>
+  </a>
+  <a href="https://wushanzhi.github.io/myHomePages/">
+    <img src="www/webshot/wushanzhi_github_io_myHomePages_.png" alt="[04-2024303110137](https://wushanzhi.github.io/myHomePages/)
+吴尚岐作业提交
+使用python内置jupyter编写ipynb文件（使用markdown语言），再调用quarto生成html文件，上传至github中使用page功能生成。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2738867774">
+    <strong>xzs16</strong>
+  </a>
+  <a href="https://xzs16.github.io/xzs/">
+    <img src="www/webshot/xzs16_github_io_xzs_.png" alt="[33-2024303120015]( https://xzs16.github.io/xzs/)徐芷珊">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2738912271">
+    <strong>wss0910</strong>
+  </a>
+  <a href="https://wss0910.github.io/study-file/">
+    <img src="www/webshot/wss0910_github_io_study_file_.png" alt="[03-2024303110068](https://wss0910.github.io/study-file/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2738962725">
+    <strong>WJ011209</strong>
+  </a>
+  <a href="https://wj011209.github.io/sjqd-wj/">
+    <img src="www/webshot/wj011209_github_io_sjqd_wj_.png" alt="[01-2024303120106](https://wj011209.github.io/sjqd-wj/)王健">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2738965784">
+    <strong>manman925</strong>
+  </a>
+  <a href="https://manman925.github.io/">
+    <img src="www/webshot/manman925_github_io_.png" alt="[11-2024303110124]( https://manman925.github.io/)
+郝栩曼作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739055151">
+    <strong>syz357</strong>
+  </a>
+  <a href="https://syz357.github.io/sbr/">
+    <img src="www/webshot/syz357_github_io_sbr_.png" alt="[24-2024303110041](https://syz357.github.io/sbr/)舒彦喆提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739129958">
+    <strong>ningcaier</strong>
+  </a>
+  <a href="https://ningcaier.github.io/website/">
+    <img src="www/webshot/ningcaier_github_io_website_.png" alt="[13-2024303110058](https://ningcaier.github.io/website/)
+宁友才，作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739144810">
+    <strong>yoayoayoa</strong>
+  </a>
+  <a href="https://yoayoayoa.github.io/myPersonalSite/">
+    <img src="www/webshot/yoayoayoa_github_io_myPersonalSite_.png" alt="[34-2024303110026](https://yoayoayoa.github.io/myPersonalSite/)
+姚恒提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739278573">
+    <strong>Cxy3207</strong>
+  </a>
+  <a href="https://cxy3207.github.io/cxyyy/">
+    <img src="www/webshot/cxy3207_github_io_cxyyy_.png" alt="[23-2024303110036](https://cxy3207.github.io/cxyyy/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739286313">
+    <strong>ha-hug</strong>
+  </a>
+  <a href="https://ha-hug.github.io/">
+    <img src="www/webshot/ha_hug_github_io_.png" alt="[13-2024303120098](https://ha-hug.github.io/)这是我第一次使用Github搭建自己的网站，在VScode终端中克隆Github仓库，创建quarto项目文件，编辑并渲染好网站后提交到仓库中，然后在github仓库中启用Github Pages">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739335930">
+    <strong>usggvv</strong>
+  </a>
+  <a href="https://usggvv.github.io/homepage/">
+    <img src="www/webshot/usggvv_github_io_homepage_.png" alt="[08-2024303120019](https://usggvv.github.io/homepage/)李璇提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739351916">
+    <strong>chuwenyu</strong>
+  </a>
+  <a href="https://chuwenyu.github.io/website/">
+    <img src="www/webshot/chuwenyu_github_io_website_.png" alt="[11-2024303110109](https://chuwenyu.github.io/website/)
+初文雨作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739352458">
+    <strong>mengtianhuang</strong>
+  </a>
+  <a href="https://mengtianhuang.github.io/homepage/">
+    <img src="www/webshot/mengtianhuang_github_io_homepage_.png" alt="[05-2024303110051](https://mengtianhuang.github.io/homepage/)黄梦甜">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739436635">
+    <strong>Zhang-Huan527</strong>
+  </a>
+  <a href="https://zhang-huan527.github.io/">
+    <img src="www/webshot/zhang_huan527_github_io_.png" alt="[01-2024303110092](https://zhang-huan527.github.io/) 张欢">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739446201">
+    <strong>jing3-xu</strong>
+  </a>
+  <a href="https://jing3-xu.github.io/xu1/">
+    <img src="www/webshot/jing3_xu_github_io_xu1_.png" alt="[17-2024303110102](https://jing3-xu.github.io/xu1/)
+许晶提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739447419">
+    <strong>ASFSADGAD</strong>
+  </a>
+  <a href="https://asfsadgad.github.io/resume/">
+    <img src="www/webshot/asfsadgad_github_io_resume_.png" alt="[23-2024303120048](https://asfsadgad.github.io/resume/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739452817">
+    <strong>Spade-Atek</strong>
+  </a>
+  <a href="https://spade-atek.github.io/blog_vuepress/">
+    <img src="www/webshot/spade_atek_github_io_blog_vuepress_.png" alt="[12-2024303120163](https://spade-atek.github.io/blog_vuepress/) 谢育泰">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739465221">
+    <strong>JT-0222</strong>
+  </a>
+  <a href="https://jt-0222.github.io/resume/">
+    <img src="www/webshot/jt_0222_github_io_resume_.png" alt="[23-2024303110049](https://jt-0222.github.io/resume/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739669290">
+    <strong>777Pu</strong>
+  </a>
+  <a href="https://777pu.github.io/777LYP/">
+    <img src="www/webshot/777pu_github_io_777LYP_.png" alt="[2024303110024]( https://777pu.github.io/777LYP/)刘逸璞提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739768458">
+    <strong>crx2024</strong>
+  </a>
+  <a href="https://crx2024.github.io/crx/">
+    <img src="www/webshot/crx2024_github_io_crx_.png" alt="[33-2024303110019]( https://crx2024.github.io/crx/)crx">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739805885">
+    <strong>yql2025</strong>
+  </a>
+  <a href="https://yql2025.github.io/yql/">
+    <img src="www/webshot/yql2025_github_io_yql_.png" alt="[33-2024303110007]( https://yql2025.github.io/yql/)yql">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2739820885">
+    <strong>sxy0326</strong>
+  </a>
+  <a href="https://sxy0326.github.io/26-2024303120158.github.io/">
+    <img src="www/webshot/sxy0326_github_io_26_2024303120158_github_io_.png" alt="[26-2024303120158](https://sxy0326.github.io/26-2024303120158.github.io/)
+石新宇提交作业并且使用了js美化了一下，增加了一些动画效果">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740021581">
+    <strong>Ouyang123456175</strong>
+  </a>
+  <a href="https://ouyang123456175.github.io/QWQ/#contact">
+    <img src="www/webshot/ouyang123456175_github_io_QWQ__contact.png" alt="[07-2024303110066](https://ouyang123456175.github.io/QWQ/#contact)欧阳皓楠提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740027304">
+    <strong>yinqi2024303120023</strong>
+  </a>
+  <a href="https://yinqi2024303120023.github.io/yq/">
+    <img src="www/webshot/yinqi2024303120023_github_io_yq_.png" alt="[23-2024303120023]( https://yinqi2024303120023.github.io/yq/)
+殷琪提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740121868">
+    <strong>duke123-afk</strong>
+  </a>
+  <a href="https://duke123-afk.github.io/11-2024303110116.github.io/">
+    <img src="www/webshot/duke123_afk_github_io_11_2024303110116_github_io_.png" alt="[11-2024303110116](https://duke123-afk.github.io/11-2024303110116.github.io/)
+李磊提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740123024">
+    <strong>abc2288</strong>
+  </a>
+  <a href="https://abc2288.github.io/">
+    <img src="www/webshot/abc2288_github_io_.png" alt="[20-2024303120007](https://abc2288.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740150213">
+    <strong>123S-OSS</strong>
+  </a>
+  <a href="https://123s-oss.github.io/2024303120016/">
+    <img src="www/webshot/123s_oss_github_io_2024303120016_.png" alt="[08-2024303120016](https://123s-oss.github.io/2024303120016/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740155877">
+    <strong>ZOUYANG520</strong>
+  </a>
+  <a href="https://zouyang520.github.io/zy/">
+    <img src="www/webshot/zouyang520_github_io_zy_.png" alt="[29-2024303120133](https://zouyang520.github.io/zy/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740159208">
+    <strong>wangjiangpeng489</strong>
+  </a>
+  <a href="https://wangjiangpeng489.github.io/wangjiangpeng/">
+    <img src="www/webshot/wangjiangpeng489_github_io_wangjiangpeng_.png" alt="[23-2024303120032](https://wangjiangpeng489.github.io/wangjiangpeng/) 
+王江鹏提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740165725">
+    <strong>GDL0909</strong>
+  </a>
+  <a href="https://gdl0909.github.io/gxl-2024303110125.github.io/">
+    <img src="www/webshot/gdl0909_github_io_gxl_2024303110125_github_io_.png" alt="[11-2024303110125](https://gdl0909.github.io/gxl-2024303110125.github.io/)
+郭小莉提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740201878">
+    <strong>zzss1204</strong>
+  </a>
+  <a href="https://zzss1204.github.io/zj/）">
+    <img src="www/webshot/zzss1204_github_io_zj__.png" alt="[26-2024303110018]（https://zzss1204.github.io/zj/）
+郑锦提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740205835">
+    <strong>Jiangbin-del</strong>
+  </a>
+  <a href="https://jiangbin-del.github.io/jiangbin/">
+    <img src="www/webshot/jiangbin_del_github_io_jiangbin_.png" alt="[30-2024303120024](https://jiangbin-del.github.io/jiangbin/)
+江滨提交
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740218697">
+    <strong>WeiduJ</strong>
+  </a>
+  <a href="https://yjin.netlify.app/">
+    <img src="www/webshot/yjin_netlify_app_.png" alt="[30-2024303110008](https://yjin.netlify.app/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740244982">
+    <strong>LYCOOLL</strong>
+  </a>
+  <a href="https://lycooll.github.io/data-shujuqudong/">
+    <img src="www/webshot/lycooll_github_io_data_shujuqudong_.png" alt="[30-2024303110005](https://lycooll.github.io/data-shujuqudong/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740245764">
+    <strong>jiayi-bit</strong>
+  </a>
+  <a href="https://jiayi-bit.github.io/-/">
+    <img src="www/webshot/jiayi_bit_github_io___.png" alt="[07-2024303120029](https://jiayi-bit.github.io/-/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740256136">
+    <strong>yans111111</strong>
+  </a>
+  <a href="https://yans111111.github.io/Introdution/">
+    <img src="www/webshot/yans111111_github_io_Introdution_.png" alt="[30-2024303110052](https://yans111111.github.io/Introdution/)翟广毅提交作业，主要基于AI生成并人为提出要求修改风格，字体，大小和内容等。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740264326">
+    <strong>shifazhen</strong>
+  </a>
+  <a href="https://shifazhen.github.io/">
+    <img src="www/webshot/shifazhen_github_io_.png" alt="[26-2024303110002](https://shifazhen.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740266846">
+    <strong>hyt702</strong>
+  </a>
+  <a href="https://hyt702.github.io/ku/">
+    <img src="www/webshot/hyt702_github_io_ku_.png" alt="[30-2024303120025](https://hyt702.github.io/ku/)洪雅婷提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740272967">
+    <strong>YZ-999</strong>
+  </a>
+  <a href="https://yz-999.github.io/github.io/">
+    <img src="www/webshot/yz_999_github_io_github_io_.png" alt="[13-2024303110096](https://yz-999.github.io/github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740279494">
+    <strong>MOCCKING</strong>
+  </a>
+  <a href="https://moccking.github.io/sjqd-cxl/">
+    <img src="www/webshot/moccking_github_io_sjqd_cxl_.png" alt="[17-2024303120142](https://moccking.github.io/sjqd-cxl/)陈霄龙提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740284507">
+    <strong>G-1988</strong>
+  </a>
+  <a href="https://g-1988.github.io/">
+    <img src="www/webshot/g_1988_github_io_.png" alt="[27-2024303120044](https://g-1988.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740298071">
+    <strong>xi-kexin</strong>
+  </a>
+  <a href="https://xi-kexin.github.io/homepage/">
+    <img src="www/webshot/xi_kexin_github_io_homepage_.png" alt="[08-2024303110089]( https://xi-kexin.github.io/homepage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740298145">
+    <strong>liukaiyue-create</strong>
+  </a>
+  <a href="https://liukaiyue-create.github.io/liukaiyue/">
+    <img src="www/webshot/liukaiyue_create_github_io_liukaiyue_.png" alt="[16-2024303110083](https://liukaiyue-create.github.io/liukaiyue/)
+刘凯悦16组">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740298192">
+    <strong>ccy-30</strong>
+  </a>
+  <a href="https://ccy-30.github.io/cy/}">
+    <img src="www/webshot/ccy_30_github_io_cy__.png" alt="26-2024303120137 { https://ccy-30.github.io/cy/}
+陈悦提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740301909">
+    <strong>liukaiyue-create</strong>
+  </a>
+  <a href="">
+    <img src="www/NA" alt="刘凯悦16组">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740306371">
+    <strong>lllfy666</strong>
+  </a>
+  <a href="https://lllfy666.github.io/lfy/">
+    <img src="www/webshot/lllfy666_github_io_lfy_.png" alt="[15-2024303120091](https://lllfy666.github.io/lfy/)李凤一第十五组">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740309290">
+    <strong>hsywww</strong>
+  </a>
+  <a href="https://hsywww.github.io/hsy1/">
+    <img src="www/webshot/hsywww_github_io_hsy1_.png" alt="[09-2024303120037](https://hsywww.github.io/hsy1/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740311575">
+    <strong>q1235qq</strong>
+  </a>
+  <a href="https://q1235qq.github.io/09-2024303120047.github.io/">
+    <img src="www/webshot/q1235qq_github_io_09_2024303120047_github_io_.png" alt="[09-2024303120047]( https://q1235qq.github.io/09-2024303120047.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740317020">
+    <strong>KKXLNDS23</strong>
+  </a>
+  <a href="https://kkxlnds23.github.io/dqwwffq/">
+    <img src="www/webshot/kkxlnds23_github_io_dqwwffq_.png" alt="[13-2024303110072](https://kkxlnds23.github.io/dqwwffq/) 罗昌丽">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740327556">
+    <strong>jiang065</strong>
+  </a>
+  <a href="https://jiang065.github.io/jiang/">
+    <img src="www/webshot/jiang065_github_io_jiang_.png" alt="[28-2024303120070](https://jiang065.github.io/jiang/)
+姜泽宇作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740328233">
+    <strong>ggggmy</strong>
+  </a>
+  <a href="https://ggggmy.github.io/github.io/">
+    <img src="www/webshot/ggggmy_github_io_github_io_.png" alt="[13-2024303110079](https://ggggmy.github.io/github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740337118">
+    <strong>xiaoiyn</strong>
+  </a>
+  <a href="https://xiaoiyn.github.io/liuxiaoying-/">
+    <img src="www/webshot/xiaoiyn_github_io_liuxiaoying__.png" alt="[28-2024303120060](https://xiaoiyn.github.io/liuxiaoying-/)
+刘晓英个人网站">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740345630">
+    <strong>good305</strong>
+  </a>
+  <a href="https://good305.github.io/personal-website/">
+    <img src="www/webshot/good305_github_io_personal_website_.png" alt="[03-2024303120112]( https://good305.github.io/personal-website/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740358997">
+    <strong>fmh2025</strong>
+  </a>
+  <a href="https://fmh2025.github.io/giyhub.io/">
+    <img src="www/webshot/fmh2025_github_io_giyhub_io_.png" alt="[13-2024303110097](https://fmh2025.github.io/giyhub.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740375035">
+    <strong>Liuhai626</strong>
+  </a>
+  <a href="https://hulajiao777.github.io/my-file/">
+    <img src="www/webshot/hulajiao777_github_io_my_file_.png" alt="[11-2024303110107](https://hulajiao777.github.io/my-file/) 候琳杰提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740377585">
+    <strong>an0070</strong>
+  </a>
+  <a href="https://an0070.github.io/paperage/">
+    <img src="www/webshot/an0070_github_io_paperage_.png" alt="[19-2024303120124](https://an0070.github.io/paperage/)
+许宏伟交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740382296">
+    <strong>yangyangyang-chen</strong>
+  </a>
+  <a href="https://yangyangyang-chen.github.io/chenyang/">
+    <img src="www/webshot/yangyangyang_chen_github_io_chenyang_.png" alt="[07-2024303110078](https://yangyangyang-chen.github.io/chenyang/)
+第7组，陈扬">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740389232">
+    <strong>buchi245</strong>
+  </a>
+  <a href="https://buchi245.github.io/academic-portfolio/">
+    <img src="www/webshot/buchi245_github_io_academic_portfolio_.png" alt="[20-2024305110002](https://buchi245.github.io/academic-portfolio/)
+20组-许丽华交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740390537">
+    <strong>yv0610</strong>
+  </a>
+  <a href="https://yv0610.github.io/D2RS/">
+    <img src="www/webshot/yv0610_github_io_D2RS_.png" alt="[04-2024303110117](https://yv0610.github.io/D2RS/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740400175">
+    <strong>jung-7-beep</strong>
+  </a>
+  <a href="https://jung-7-beep.github.io/zhangxian/">
+    <img src="www/webshot/jung_7_beep_github_io_zhangxian_.png" alt="[25-2024303120079](https://jung-7-beep.github.io/zhangxian/)张娴">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740408242">
+    <strong>xuexue-chen</strong>
+  </a>
+  <a href="https://xuexue-chen.github.io/homepage/">
+    <img src="www/webshot/xuexue_chen_github_io_homepage_.png" alt="[16-2024303110105](https://xuexue-chen.github.io/homepage/)
+第16组陈雪">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740409304">
+    <strong>xunxuna66</strong>
+  </a>
+  <a href="https://xunxuna66.github.io/jianliwangzhan/">
+    <img src="www/webshot/xunxuna66_github_io_jianliwangzhan_.png" alt="[20-2024305110001](https://xunxuna66.github.io/jianliwangzhan/)
+20组  索子轩  提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740417501">
+    <strong>Xin-959</strong>
+  </a>
+  <a href="https://xin-959.github.io/XLX">
+    <img src="www/webshot/xin_959_github_io_XLX.png" alt="[04-2024303120105](https://xin-959.github.io/XLX) 熊林欣提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740420409">
+    <strong>libee7864</strong>
+  </a>
+  <a href="https://libee7864.github.io/libee/">
+    <img src="www/webshot/libee7864_github_io_libee_.png" alt="[30-2024303120045](https://libee7864.github.io/libee/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740425798">
+    <strong>emma88887</strong>
+  </a>
+  <a href="https://emma88887.github.io/website/">
+    <img src="www/webshot/emma88887_github_io_website_.png" alt="[20-2024303110010](https://emma88887.github.io/website/) 汪意如作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740426704">
+    <strong>weekryan</strong>
+  </a>
+  <a href="https://weekryan.github.io/week/contact.html">
+    <img src="www/webshot/weekryan_github_io_week_contact_html.png" alt="[29-2024303120051](https://weekryan.github.io/week/contact.html)
+第29 组魏珂">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740429212">
+    <strong>lyf123456654321</strong>
+  </a>
+  <a href="https://lyf123456654321.github.io/create-web/">
+    <img src="www/webshot/lyf123456654321_github_io_create_web_.png" alt="[29-2024303110063](https://lyf123456654321.github.io/create-web/)
+李一帆作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740430541">
+    <strong>SunM-lab</strong>
+  </a>
+  <a href="https://sunm-lab.github.io/SunM/">
+    <img src="www/webshot/sunm_lab_github_io_SunM_.png" alt="[07-2024303120072](https://sunm-lab.github.io/SunM/)孙孟提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740434539">
+    <strong>djl18461075977</strong>
+  </a>
+  <a href="https://djl18461075977.github.io/">
+    <img src="www/webshot/djl18461075977_github_io_.png" alt="[19-2024303110037](https://djl18461075977.github.io/)19组杜金磊">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740452967">
+    <strong>HXL5151</strong>
+  </a>
+  <a href="https://hxl5151.github.io/HXL/">
+    <img src="www/webshot/hxl5151_github_io_HXL_.png" alt="[25-2024303120049](https://hxl5151.github.io/HXL/) 韩筱璐">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740454832">
+    <strong>LeoryWang</strong>
+  </a>
+  <a href="https://leorywang.github.io/Leo-s-resume/">
+    <img src="www/webshot/leorywang_github_io_Leo_s_resume_.png" alt="[23-2024303120030](https://leorywang.github.io/Leo-s-resume/) 23组王尧意">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740458074">
+    <strong>liyalin0811</strong>
+  </a>
+  <a href="https://liyalin0811.github.io/">
+    <img src="www/webshot/liyalin0811_github_io_.png" alt="[03-2024303120090](https://liyalin0811.github.io/) 第03组 李亚琳提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740464655">
+    <strong>coraluo</strong>
+  </a>
+  <a href="https://coraluo.github.io/homepage/">
+    <img src="www/webshot/coraluo_github_io_homepage_.png" alt="[17-2024303120116](https://coraluo.github.io/homepage/)第17组 罗欣欣提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740466429">
+    <strong>hzauym</strong>
+  </a>
+  <a href="https://hzauym.github.io/hzauym.github.oi/">
+    <img src="www/webshot/hzauym_github_io_hzauym_github_oi_.png" alt="[27-2024303120038](https://hzauym.github.io/hzauym.github.oi/)
+27组袁沐">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740475872">
+    <strong>acdmini</strong>
+  </a>
+  <a href="https://acdmini.github.io/acdmini/">
+    <img src="www/webshot/acdmini_github_io_acdmini_.png" alt="[31-2024303120056](https://acdmini.github.io/acdmini/)31组刘兵兵">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740480055">
+    <strong>whx-321</strong>
+  </a>
+  <a href="https://whx-321.github.io/WHX/">
+    <img src="www/webshot/whx_321_github_io_WHX_.png" alt="[31-2024303110086](https://whx-321.github.io/WHX/)
+第31组吴含雪">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740493493">
+    <strong>huihuihui-ma</strong>
+  </a>
+  <a href="https://huihuihui-ma.github.io/mahomepage/">
+    <img src="www/webshot/huihuihui_ma_github_io_mahomepage_.png" alt="[16-2024303120143](https://huihuihui-ma.github.io/mahomepage/)
+第16组马慧作业提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740513692">
+    <strong>Zhang1hzau</strong>
+  </a>
+  <a href="https://zhang1hzau.github.io/">
+    <img src="www/webshot/zhang1hzau_github_io_.png" alt="[27-2024303120014](https://zhang1hzau.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740521886">
+    <strong>libee7864</strong>
+  </a>
+  <a href="https://libee7864.github.io/lijia/">
+    <img src="www/webshot/libee7864_github_io_lijia_.png" alt="[30-2024303110004](https://libee7864.github.io/lijia/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740534186">
+    <strong>caoxuhui1</strong>
+  </a>
+  <a href="https://caoxuhui1.github.io/aaaaa/">
+    <img src="www/webshot/caoxuhui1_github_io_aaaaa_.png" alt="[21-2024303120086](https://caoxuhui1.github.io/aaaaa/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740569240">
+    <strong>Pyq-bit</strong>
+  </a>
+  <a href="https://pyq-bit.github.io/Pyq-bit/">
+    <img src="www/webshot/pyq_bit_github_io_Pyq_bit_.png" alt="04-2024303120076 [庞宇琦的个人网站](https://pyq-bit.github.io/Pyq-bit/)庞宇琦">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740579892">
+    <strong>mengchu-chu</strong>
+  </a>
+  <a href="https://mengchu-chu.github.io/">
+    <img src="www/webshot/mengchu_chu_github_io_.png" alt="[32-2024303110113](https://mengchu-chu.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740585224">
+    <strong>Penglijuanxxx</strong>
+  </a>
+  <a href="https://penglijuanxxx.github.io/plj/">
+    <img src="www/webshot/penglijuanxxx_github_io_plj_.png" alt="[25-2024303110061](https://penglijuanxxx.github.io/plj/)彭丽娟">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740588450">
+    <strong>LS1457</strong>
+  </a>
+  <a href="https://ls1457.github.io/homepage/">
+    <img src="www/webshot/ls1457_github_io_homepage_.png" alt="[27-2024303120021](https://ls1457.github.io/homepage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740590677">
+    <strong>7352Mengyuan</strong>
+  </a>
+  <a href="https://7352mengyuan.github.io/homepage/">
+    <img src="www/webshot/7352mengyuan_github_io_homepage_.png" alt="[27-2024303110033]( https://7352mengyuan.github.io/homepage/)
+第一个网站">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740591387">
+    <strong>chengchaofan-123</strong>
+  </a>
+  <a href="https://chengchaofan-123.github.io/">
+    <img src="www/webshot/chengchaofan_123_github_io_.png" alt="[25-2024303120114](https://chengchaofan-123.github.io/)程超凡">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740594466">
+    <strong>DongKuankk</strong>
+  </a>
+  <a href="https://dongkuankk.github.io/">
+    <img src="www/webshot/dongkuankk_github_io_.png" alt="[03-2024303120121](https://dongkuankk.github.io/)第03组 董宽">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740614357">
+    <strong>Zhang1hzau</strong>
+  </a>
+  <a href="https://zhang1hzau.github.io/homepage/">
+    <img src="www/webshot/zhang1hzau_github_io_homepage_.png" alt="[27-2024303120014](https://zhang1hzau.github.io/homepage/ )张蒙蒙提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740659557">
+    <strong>SSY-DEL</strong>
+  </a>
+  <a href="https://ssy-del.github.io/">
+    <img src="www/webshot/ssy_del_github_io_.png" alt="[10-2024303120071](https://ssy-del.github.io/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740668778">
+    <strong>sqzhang400</strong>
+  </a>
+  <a href="https://sqzhang400.github.io/homepage/">
+    <img src="www/webshot/sqzhang400_github_io_homepage_.png" alt="[27-2024303110030](https://sqzhang400.github.io/homepage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740698487">
+    <strong>Francescalulu</strong>
+  </a>
+  <a href="https://francescalulu.github.io/hlw/">
+    <img src="www/webshot/francescalulu_github_io_hlw_.png" alt="[14-2024303110055](https://francescalulu.github.io/hlw/)何璐娟提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740718470">
+    <strong>fansongwei-dev</strong>
+  </a>
+  <a href="https://fansongwei-dev.github.io/fsw-first/">
+    <img src="www/webshot/fansongwei_dev_github_io_fsw_first_.png" alt="[25-2024303120119](https://fansongwei-dev.github.io/fsw-first/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740746532">
+    <strong>luluyue</strong>
+  </a>
+  <a href="https://luluyue.github.io/homepaper/about.html">
+    <img src="www/webshot/luluyue_github_io_homepaper_about_html.png" alt="[19-2024303120074](https://luluyue.github.io/homepaper/about.html)
+岳璐璐提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740753267">
+    <strong>huq-q</strong>
+  </a>
+  <a href="https://huq-q.github.io/hq/">
+    <img src="www/webshot/huq_q_github_io_hq_.png" alt="[02-2024303110074](https://huq-q.github.io/hq/)02组胡琴">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740761169">
+    <strong>zxy110031</strong>
+  </a>
+  <a href="https://zxy110031.github.io/zxy/">
+    <img src="www/webshot/zxy110031_github_io_zxy_.png" alt="[27-2024303110031](https://zxy110031.github.io/zxy/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740856199">
+    <strong>qazzjh</strong>
+  </a>
+  <a href="https://qazzjh.github.io/qazz/">
+    <img src="www/webshot/qazzjh_github_io_qazz_.png" alt="[14-2024303120115](https://qazzjh.github.io/qazz/) 
+来自24级资源利用与植物保护专业章君昊的个人网站，在搭建过程中，运用了Gemini2.0帮助和vscode自主编写，并使用了Jekyll模板，由于电脑上没有存储个人照片故未添加，在这一过程中，我学习到了搭建网站的基础知识和方法，日后也将运用新技术完善这个网站的搭建">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740861873">
+    <strong>honeymie</strong>
+  </a>
+  <a href="https://honeymie.github.io/home/">
+    <img src="www/webshot/honeymie_github_io_home_.png" alt="[27-2024303110050]( https://honeymie.github.io/home/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740865229">
+    <strong>chenzhihan-web</strong>
+  </a>
+  <a href="https://chenzhihan-web.github.io/CZH/">
+    <img src="www/webshot/chenzhihan_web_github_io_CZH_.png" alt="[07-2024303110048](https://chenzhihan-web.github.io/CZH/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740894611">
+    <strong>rdzhou-2002</strong>
+  </a>
+  <a href="https://rdzhou-2002.github.io/rdzdck/">
+    <img src="www/webshot/rdzhou_2002_github_io_rdzdck_.png" alt="[18-2024303120120](https://rdzhou-2002.github.io/rdzdck/) 茹东周提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740913489">
+    <strong>simplelity</strong>
+  </a>
+  <a href="https://simplelity.github.io/my-personal-website/">
+    <img src="www/webshot/simplelity_github_io_my_personal_website_.png" alt="[05-2024303110043](https://simplelity.github.io/my-personal-website/)虞乐提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740936708">
+    <strong>yxs-plj</strong>
+  </a>
+  <a href="https://yxs-plj.github.io/myHomePage/">
+    <img src="www/webshot/yxs_plj_github_io_myHomePage_.png" alt="[28-2024303110095](https://yxs-plj.github.io/myHomePage/)
+杨晓森
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2740944064">
+    <strong>shen-cmyk</strong>
+  </a>
+  <a href="https://shen-cmyk.github.io/Ami/">
+    <img src="www/webshot/shen_cmyk_github_io_Ami_.png" alt="[24-2024303110070](https://shen-cmyk.github.io/Ami/)
+美丽大方可爱迷人温柔善良体贴细心的小申来喽~">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2741014760">
+    <strong>Amerhan1</strong>
+  </a>
+  <a href="https://amerhan1.github.io/POWDER.github.io/">
+    <img src="www/webshot/amerhan1_github_io_POWDER_github_io_.png" alt="[28-2024303120129](https://amerhan1.github.io/POWDER.github.io/)赵一晗的个人信息网站（幼年版）">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2741052250">
+    <strong>ranqin-qu</strong>
+  </a>
+  <a href="https://ranqin-qu.github.io/yuanyuan-cai/">
+    <img src="www/webshot/ranqin_qu_github_io_yuanyuan_cai_.png" alt="[15-2024303120162](https://ranqin-qu.github.io/yuanyuan-cai/)蔡源远作业提交（太丑了千万别看TT)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2741975343">
+    <strong>GAOMING-RUI</strong>
+  </a>
+  <a href="https://gaoming-rui.github.io/wbfoau/">
+    <img src="www/webshot/gaoming_rui_github_io_wbfoau_.png" alt="[20-2024303110106](https://gaoming-rui.github.io/wbfoau/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742029871">
+    <strong>yanbohan889</strong>
+  </a>
+  <a href="https://yanbohan889.github.io/">
+    <img src="www/webshot/yanbohan889_github_io_.png" alt="[20-2024303110104](https://yanbohan889.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742069444">
+    <strong>pp285</strong>
+  </a>
+  <a href="https://pp285.github.io/pp/">
+    <img src="www/webshot/pp285_github_io_pp_.png" alt="[24-2024303110059](https://pp285.github.io/pp/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742089358">
+    <strong>ykyh28</strong>
+  </a>
+  <a href="https://ykyh28.github.io/homepage/">
+    <img src="www/webshot/ykyh28_github_io_homepage_.png" alt="[10-2024303120041](https://ykyh28.github.io/homepage/)
+赵驰提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742097409">
+    <strong>JYQ-123</strong>
+  </a>
+  <a href="https://jyq-123.github.io/jyq/">
+    <img src="www/webshot/jyq_123_github_io_jyq_.png" alt="[29-2024303110088](https://jyq-123.github.io/jyq/)姜一芊个人网站提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742125814">
+    <strong>zhou125910</strong>
+  </a>
+  <a href="https://zhou125910.github.io/">
+    <img src="www/webshot/zhou125910_github_io_.png" alt="[16-2024303110057](https://zhou125910.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742126327">
+    <strong>zhaoyaoyao423</strong>
+  </a>
+  <a href="https://zhaoyaoyao423.github.io/git.demo/">
+    <img src="www/webshot/zhaoyaoyao423_github_io_git_demo_.png" alt="[09-2024303110044](https://zhaoyaoyao423.github.io/git.demo/)这是我的个人网站">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742144401">
+    <strong>weare-lab</strong>
+  </a>
+  <a href="https://weare-lab.github.io/home/">
+    <img src="www/webshot/weare_lab_github_io_home_.png" alt="[21-2024303120167](https://weare-lab.github.io/home/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742159538">
+    <strong>3012710582</strong>
+  </a>
+  <a href="https://3012710582.github.io/liuhaitao.github.io/">
+    <img src="www/webshot/3012710582_github_io_liuhaitao_github_io_.png" alt="[25-2024303120061](https://3012710582.github.io/liuhaitao.github.io/)刘海涛">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742188680">
+    <strong>Lyx-hub789</strong>
+  </a>
+  <a href="https://lyx-hub789.github.io/linyaxin/">
+    <img src="www/webshot/lyx_hub789_github_io_linyaxin_.png" alt="[31-2024303120099](https://lyx-hub789.github.io/linyaxin/)林亚鑫">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742189685">
+    <strong>ZBFHJ</strong>
+  </a>
+  <a href="https://zbfhj.github.io/26-2024303120082.github.io/">
+    <img src="www/webshot/zbfhj_github_io_26_2024303120082_github_io_.png" alt="[26-20243031200082](https://zbfhj.github.io/26-2024303120082.github.io/)张颁法">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742233509">
+    <strong>2024303120063</strong>
+  </a>
+  <a href="https://2024303120063.github.io/2024303120063ljl.github.io/">
+    <img src="www/webshot/2024303120063_github_io_2024303120063ljl_github_io_.png" alt="[16-2024303120063](https://2024303120063.github.io/2024303120063ljl.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742325878">
+    <strong>m1st0917</strong>
+  </a>
+  <a href="https://m1st0917.github.io/homework/">
+    <img src="www/webshot/m1st0917_github_io_homework_.png" alt="[14-2024303120087]( https://m1st0917.github.io/homework/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742326812">
+    <strong>Xiongmaowang14</strong>
+  </a>
+  <a href="https://xiongmaowang.netlify.app/">
+    <img src="www/webshot/xiongmaowang_netlify_app_.png" alt="[29-2024303120027](https://xiongmaowang.netlify.app/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742326828">
+    <strong>2024303120063</strong>
+  </a>
+  <a href="">
+    <img src="www/NA" alt="小林已收到，您辛苦啦！">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742381569">
+    <strong>Ming1209x</strong>
+  </a>
+  <a href="https://ming1209x.github.io/MING/">
+    <img src="www/webshot/ming1209x_github_io_MING_.png" alt="[28-2024303120084](https://ming1209x.github.io/MING/)
+明轩">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742493414">
+    <strong>yufan-19960521</strong>
+  </a>
+  <a href="https://yufan-19960521.github.io/yufan/">
+    <img src="www/webshot/yufan_19960521_github_io_yufan_.png" alt="[09-2024303110025](https://yufan-19960521.github.io/yufan/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742549632">
+    <strong>JoostLiu11</strong>
+  </a>
+  <a href="https://joostliu11.github.io/-git/">
+    <img src="www/webshot/joostliu11_github_io__git_.png" alt="[08-2024303120006](https://joostliu11.github.io/-git/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742555111">
+    <strong>qianqiu-sos</strong>
+  </a>
+  <a href="https://qianqiu-sos.github.io/qianqiu-sos/">
+    <img src="www/webshot/qianqiu_sos_github_io_qianqiu_sos_.png" alt="[31-2024303120107](https://qianqiu-sos.github.io/qianqiu-sos/)王干磊">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742561304">
+    <strong>pmk1017</strong>
+  </a>
+  <a href="https://pmk1017.github.io/31-2024303120104.github.io">
+    <img src="www/webshot/pmk1017_github_io_31_2024303120104_github_io.png" alt="[31-2024303120104](https://pmk1017.github.io/31-2024303120104.github.io)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742563254">
+    <strong>heleling</strong>
+  </a>
+  <a href="https://heleling.github.io/hele/">
+    <img src="www/webshot/heleling_github_io_hele_.png" alt="[26-2024303120127](https://heleling.github.io/hele/)贺乐玲">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742568428">
+    <strong>Zhang2024303110032</strong>
+  </a>
+  <a href="https://zhang2024303110032.github.io/2024303110032/">
+    <img src="www/webshot/zhang2024303110032_github_io_2024303110032_.png" alt="[08-2024303110032](https://zhang2024303110032.github.io/2024303110032/)张泾平">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742576125">
+    <strong>Song-1228-snow</strong>
+  </a>
+  <a href="https://song-1228-snow.github.io/my-personal-website/">
+    <img src="www/webshot/song_1228_snow_github_io_my_personal_website_.png" alt="[28-2024303110059](https://song-1228-snow.github.io/my-personal-website/)
+这是宋雪琪的第一个个人网站！！">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742581028">
+    <strong>ShenYx16</strong>
+  </a>
+  <a href="https://shenyx16.github.io/shen111">
+    <img src="www/webshot/shenyx16_github_io_shen111.png" alt="[03-2024303110014](https://shenyx16.github.io/shen111)申钰鑫">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742597212">
+    <strong>xlw911</strong>
+  </a>
+  <a href="https://xlw911.github.io/xlw911.github.io.//">
+    <img src="www/webshot/xlw911_github_io_xlw911_github_io___.png" alt="[4-2024303120110](https://xlw911.github.io/xlw911.github.io.//)王筱蕾">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742605854">
+    <strong>lumos-0</strong>
+  </a>
+  <a href="https://lumos-0.github.io/">
+    <img src="www/webshot/lumos_0_github_io_.png" alt="[6-2024303120140](https://lumos-0.github.io/)陈羽萱
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742622976">
+    <strong>aili566091</strong>
+  </a>
+  <a href="https://exquisite-cassata-10d918.netlify.app/">
+    <img src="www/webshot/exquisite_cassata_10d918_netlify_app_.png" alt="[30-2024303121001](https://exquisite-cassata-10d918.netlify.app/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742623796">
+    <strong>t12ing</strong>
+  </a>
+  <a href="https://t12ing.github.io/-ing/">
+    <img src="www/webshot/t12ing_github_io__ing_.png" alt="[14-2024303120080]( https://t12ing.github.io/-ing/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742644996">
+    <strong>YEE-Caroline</strong>
+  </a>
+  <a href="https://yee-caroline.github.io/">
+    <img src="www/webshot/yee_caroline_github_io_.png" alt="[16-2024303120141](https://yee-caroline.github.io/)第一次注册属于自己的网站，很神奇！">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742653925">
+    <strong>er495</strong>
+  </a>
+  <a href="https://er495.github.io/resume/">
+    <img src="www/webshot/er495_github_io_resume_.png" alt="[21-2024303110133](https://er495.github.io/resume/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742679086">
+    <strong>vvjpbb</strong>
+  </a>
+  <a href="https://vvjpbb.github.io/my_resume/">
+    <img src="www/webshot/vvjpbb_github_io_my_resume_.png" alt="[04-2024303110110](https://vvjpbb.github.io/my_resume/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742702262">
+    <strong>WJX2024303110022</strong>
+  </a>
+  <a href="https://wjx2024303110022.github.io/2/">
+    <img src="www/webshot/wjx2024303110022_github_io_2_.png" alt="[09-2024303110022](https://wjx2024303110022.github.io/2/)
+
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742705526">
+    <strong>zj303110034</strong>
+  </a>
+  <a href="https://zj303110034.github.io/1/">
+    <img src="www/webshot/zj303110034_github_io_1_.png" alt="09-2024303110034 https://zj303110034.github.io/1/
+
+
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742720221">
+    <strong>chen5210311</strong>
+  </a>
+  <a href="https://chen5210311.github.io/gerenjianli/">
+    <img src="www/webshot/chen5210311_github_io_gerenjianli_.png" alt="[15-2024303120165](https://chen5210311.github.io/gerenjianli/)  
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742745588">
+    <strong>zwz1004</strong>
+  </a>
+  <a href="https://zwz1004.github.io/-zwz1004-.github.io/">
+    <img src="www/webshot/zwz1004_github_io__zwz1004__github_io_.png" alt="[03-2024303110001](https://zwz1004.github.io/-zwz1004-.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742755261">
+    <strong>qyw111</strong>
+  </a>
+  <a href="https://qyw111.github.io/gerenjianli1/">
+    <img src="www/webshot/qyw111_github_io_gerenjianli1_.png" alt="[15-2024303110128](https://qyw111.github.io/gerenjianli1/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742761237">
+    <strong>kevin-1225</strong>
+  </a>
+  <a href="https://kevin-1225.github.io/">
+    <img src="www/webshot/kevin_1225_github_io_.png" alt="[16-2024303120134](https://kevin-1225.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742777805">
+    <strong>chen5210311</strong>
+  </a>
+  <a href="https://chen5210311.github.io/jianli1/">
+    <img src="www/webshot/chen5210311_github_io_jianli1_.png" alt="[15-2024303120165](https://chen5210311.github.io/jianli1/)  陈亚非提交
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742780032">
+    <strong>zkx-bit123</strong>
+  </a>
+  <a href="https://zkx-bit123.github.io/zhangkaixvan/">
+    <img src="www/webshot/zkx_bit123_github_io_zhangkaixvan_.png" alt="[31-2024303120078](https://zkx-bit123.github.io/zhangkaixvan/)张凯璇">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742784609">
+    <strong>SNOW0311</strong>
+  </a>
+  <a href="https://snow0311.github.io/123github.io/">
+    <img src="www/webshot/snow0311_github_io_123github_io_.png" alt="[14-2024303110060](https://snow0311.github.io/123github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742792737">
+    <strong>la0626</strong>
+  </a>
+  <a href="https://la0626.github.io/31-2024303120093.github.io/">
+    <img src="www/webshot/la0626_github_io_31_2024303120093_github_io_.png" alt="[31-2024303120093](https://la0626.github.io/31-2024303120093.github.io/) 李安">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742813978">
+    <strong>haiyu-18</strong>
+  </a>
+  <a href="https://haiyu-18.github.io/11-2024303120159.github.io/">
+    <img src="www/webshot/haiyu_18_github_io_11_2024303120159_github_io_.png" alt="[11-2024303120159](https://haiyu-18.github.io/11-2024303120159.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742828284">
+    <strong>11-sansb</strong>
+  </a>
+  <a href="https://11-sansb.github.io/personalsite/">
+    <img src="www/webshot/11_sansb_github_io_personalsite_.png" alt="[18-2024303110093](https://11-sansb.github.io/personalsite/)易伯涛提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742835318">
+    <strong>Vendy985</strong>
+  </a>
+  <a href="https://vendy985.github.io/Vendy/">
+    <img src="www/webshot/vendy985_github_io_Vendy_.png" alt="[03-2024303120126](https://vendy985.github.io/Vendy/)谭文迪">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742921064">
+    <strong>Cathyhm</strong>
+  </a>
+  <a href="https://cathyhm.github.io/website/">
+    <img src="www/webshot/cathyhm_github_io_website_.png" alt="[03-2024303110054](https://cathyhm.github.io/website/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742933507">
+    <strong>q1235qq</strong>
+  </a>
+  <a href="https://q1235qq.github.io/my-resume/">
+    <img src="www/webshot/q1235qq_github_io_my_resume_.png" alt="[09-2024303120047](https://q1235qq.github.io/my-resume/)提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742956919">
+    <strong>marlon721</strong>
+  </a>
+  <a href="https://marlon721.github.io/dongman/">
+    <img src="www/webshot/marlon721_github_io_dongman_.png" alt="[15-2024303110127](https://marlon721.github.io/dongman/)  刘洪妍">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742962466">
+    <strong>Song-1228-snow</strong>
+  </a>
+  <a href="https://song-1228-snow.github.io/my-personal-website/">
+    <img src="www/webshot/song_1228_snow_github_io_my_personal_website_.png" alt="[28-2024303110059](https://song-1228-snow.github.io/my-personal-website/)
+这是宋雪琪的第一个个人网站——复活版">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2742997010">
+    <strong>Cathyhm</strong>
+  </a>
+  <a href="https://cathyhm.github.io/jianli/">
+    <img src="www/webshot/cathyhm_github_io_jianli_.png" alt="[03-2024303110054](https://cathyhm.github.io/jianli/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743059582">
+    <strong>SNOW0311</strong>
+  </a>
+  <a href="https://snow0311.github.io/1234github.io/">
+    <img src="www/webshot/snow0311_github_io_1234github_io_.png" alt="[14-2024303110060](https://snow0311.github.io/1234github.io/)张雪提交作业最终版">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743094898">
+    <strong>lee1234567843</strong>
+  </a>
+  <a href="https://lee1234567843.github.io/baixing/">
+    <img src="www/webshot/lee1234567843_github_io_baixing_.png" alt="[23-2024303110040](https://lee1234567843.github.io/baixing/)
+白兴提交">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743140195">
+    <strong>tli111</strong>
+  </a>
+  <a href="https://tli111.github.io/LT/">
+    <img src="www/webshot/tli111_github_io_LT_.png" alt="[18-2024303110094](https://tli111.github.io/LT/) 李涛提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743209426">
+    <strong>wenman123</strong>
+  </a>
+  <a href="http://127.0.0.1:5500/index.html">
+    <img src="www/webshot/127_0_0_1_5500_index_html.png" alt="[34-2024303110035](http://127.0.0.1:5500/index.html)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743274544">
+    <strong>1322766</strong>
+  </a>
+  <a href="https://1322766.github.io/MM/">
+    <img src="www/webshot/1322766_github_io_MM_.png" alt="[05-2024303120050](https://1322766.github.io/MM/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743284673">
+    <strong>ly-2025</strong>
+  </a>
+  <a href="https://ly-2025.github.io/lyck/">
+    <img src="www/webshot/ly_2025_github_io_lyck_.png" alt="[18-2024303120054](https://ly-2025.github.io/lyck/) 兰艳提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743287242">
+    <strong>xuanzipei</strong>
+  </a>
+  <a href="https://xuanzipei.github.io/PZX/">
+    <img src="www/webshot/xuanzipei_github_io_PZX_.png" alt="[15-2024303110136](https://xuanzipei.github.io/PZX/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743304914">
+    <strong>xiaojiangxiaoting</strong>
+  </a>
+  <a href="https://xiaojiangxiaoting.github.io/homepage/">
+    <img src="www/webshot/xiaojiangxiaoting_github_io_homepage_.png" alt="[10-2024303110027](https://xiaojiangxiaoting.github.io/homepage/)
+姜晓婷">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743322421">
+    <strong>jkkk47777</strong>
+  </a>
+  <a href="https://jkkk47777.github.io/resume/">
+    <img src="www/webshot/jkkk47777_github_io_resume_.png" alt="[17-2024303120053](https://jkkk47777.github.io/resume/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743330754">
+    <strong>caowenzhuo12</strong>
+  </a>
+  <a href="https://caowenzhuo12.github.io/caowz.github.io/">
+    <img src="www/webshot/caowenzhuo12_github_io_caowz_github_io_.png" alt="[14-2024303120085](https://caowenzhuo12.github.io/caowz.github.io/)
+24植保曹文卓提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743398616">
+    <strong>AJ-crush</strong>
+  </a>
+  <a href="https://aj-crush.github.io/jianli/">
+    <img src="www/webshot/aj_crush_github_io_jianli_.png" alt="[15-2024303120010](https://aj-crush.github.io/jianli/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743474320">
+    <strong>xiaoliuxiaoliu-ux</strong>
+  </a>
+  <a href="https://xiaoliuxiaoliu-ux.github.io/homepage/">
+    <img src="www/webshot/xiaoliuxiaoliu_ux_github_io_homepage_.png" alt="[10-2024303120004](https://xiaoliuxiaoliu-ux.github.io/homepage/)
+刘春玲">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743485234">
+    <strong>fas20052</strong>
+  </a>
+  <a href="https://fas20052.github.io/hjc.github.io/">
+    <img src="www/webshot/fas20052_github_io_hjc_github_io_.png" alt="[34-2024303120052](https://fas20052.github.io/hjc.github.io/)黄江城的个人网站">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743512034">
+    <strong>yh1511</strong>
+  </a>
+  <a href="https://yh1511.github.io/yh.github.io/">
+    <img src="www/webshot/yh1511_github_io_yh_github_io_.png" alt="[15-2024303110101](https://yh1511.github.io/yh.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743533073">
+    <strong>zym4417</strong>
+  </a>
+  <a href="https://zym4417.github.io/resume/">
+    <img src="www/webshot/zym4417_github_io_resume_.png" alt="[17-2024303110090](https://zym4417.github.io/resume/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743533734">
+    <strong>crr343</strong>
+  </a>
+  <a href="https://crr343.github.io/31-2024303120136.github.io/">
+    <img src="www/webshot/crr343_github_io_31_2024303120136_github_io_.png" alt="[31-2024303120136](https://crr343.github.io/31-2024303120136.github.io/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743565821">
+    <strong>2024303110076</strong>
+  </a>
+  <a href="https://2024303110076.github.io/">
+    <img src="www/webshot/2024303110076_github_io_.png" alt="[16-2024303110076谢茹芸](https://2024303110076.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743643959">
+    <strong>YSD418</strong>
+  </a>
+  <a href="https://ysd418.github.io/lalaa/">
+    <img src="www/webshot/ysd418_github_io_lalaa_.png" alt="[07-2024303120122](https://ysd418.github.io/lalaa/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743676646">
+    <strong>1900375417</strong>
+  </a>
+  <a href="https://1900375417.github.io/kczy/">
+    <img src="www/webshot/1900375417_github_io_kczy_.png" alt="[19-2024303120069](https://1900375417.github.io/kczy/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743690815">
+    <strong>wanghaokun779</strong>
+  </a>
+  <a href="https://wanghaokun779.github.io/wanghaokun/">
+    <img src="www/webshot/wanghaokun779_github_io_wanghaokun_.png" alt="[21-2024303120109](https://wanghaokun779.github.io/wanghaokun/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743757039">
+    <strong>xuexiaoshuai666</strong>
+  </a>
+  <a href="https://xuexiaoshuai666.github.io/myHomePage/">
+    <img src="www/webshot/xuexiaoshuai666_github_io_myHomePage_.png" alt="[19-2024303110075]( https://xuexiaoshuai666.github.io/myHomePage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743764503">
+    <strong>cntsxk</strong>
+  </a>
+  <a href="https://cntsxk.github.io/kanggedezuoye/">
+    <img src="www/webshot/cntsxk_github_io_kanggedezuoye_.png" alt="[11-2024303110111](https://cntsxk.github.io/kanggedezuoye/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743844208">
+    <strong>VER1212</strong>
+  </a>
+  <a href="https://ver1212.github.io/home/">
+    <img src="www/webshot/ver1212_github_io_home_.png" alt="[33-2024303110011](https://ver1212.github.io/home/)熊佳怡提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743929314">
+    <strong>hunie233</strong>
+  </a>
+  <a href="https://hunie233.github.io/hunie.github.io/">
+    <img src="www/webshot/hunie233_github_io_hunie_github_io_.png" alt="[24-2024303120012](https://hunie233.github.io/hunie.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2743930252">
+    <strong>sjy7862100</strong>
+  </a>
+  <a href="https://sjy7862100.github.io/-/">
+    <img src="www/webshot/sjy7862100_github_io___.png" alt="[19-2024303120073](https://sjy7862100.github.io/-/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744840027">
+    <strong>Wang-YuXuan396</strong>
+  </a>
+  <a href="https://wang-yuxuan396.github.io/WYX396/">
+    <img src="www/webshot/wang_yuxuan396_github_io_WYX396_.png" alt="[09-2024303120033](https://[wang-yuxuan396.github.io](https://wang-yuxuan396.github.io/WYX396/)/WYX396/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744903605">
+    <strong>ABEL-L76</strong>
+  </a>
+  <a href="https://abel-l76.github.io/myHomePage/">
+    <img src="www/webshot/abel_l76_github_io_myHomePage_.png" alt="[06-2024303110087](https://abel-l76.github.io/myHomePage/)唐文麒">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744942266">
+    <strong>LiLizuibang142</strong>
+  </a>
+  <a href="https://lilizuibang142.github.io/HomePages/">
+    <img src="www/webshot/lilizuibang142_github_io_HomePages_.png" alt="[17-2024303120097](https://lilizuibang142.github.io/HomePages/)李黎提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744969454">
+    <strong>xiaan-ui</strong>
+  </a>
+  <a href="https://xiaan-ui.github.io/wr/">
+    <img src="www/webshot/xiaan_ui_github_io_wr_.png" alt="[33-2024303110013]( https://xiaan-ui.github.io/wr/)wr">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744969497">
+    <strong>pc001hub</strong>
+  </a>
+  <a href="https://pc001hub.github.io/pc001hub.github.io-homepage-/">
+    <img src="www/webshot/pc001hub_github_io_pc001hub_github_io_homepage__.png" alt="[24-2024303120026](https://pc001hub.github.io/pc001hub.github.io-homepage-/)
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744979179">
+    <strong>mxttt173</strong>
+  </a>
+  <a href="https://mxttt173.github.io/mxt2/">
+    <img src="www/webshot/mxttt173_github_io_mxt2_.png" alt="[12-2024303120152](https://mxttt173.github.io/mxt2/) 宓小童提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2744991903">
+    <strong>kk11985</strong>
+  </a>
+  <a href="https://kk11985.github.io/resume/">
+    <img src="www/webshot/kk11985_github_io_resume_.png" alt="[10-2024303120151](https://kk11985.github.io/resume/)10组孔超提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745015373">
+    <strong>BookTotle</strong>
+  </a>
+  <a href="https://www.blicji.cn/">
+    <img src="www/webshot/www_blicji_cn_.png" alt="[10-2024303120161](https://www.blicji.cn/)10组董国伟提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745019084">
+    <strong>DantyGure</strong>
+  </a>
+  <a href="https://dantygure.github.io/111/">
+    <img src="www/webshot/dantygure_github_io_111_.png" alt="[19-2024303120065]( https://dantygure.github.io/111/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745023680">
+    <strong>lxh123456-gif</strong>
+  </a>
+  <a href="https://lxh123456-gif.github.io/11/">
+    <img src="www/webshot/lxh123456_gif_github_io_11_.png" alt="[19-2024303120058]( https://lxh123456-gif.github.io/11/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745060643">
+    <strong>xihan-web</strong>
+  </a>
+  <a href="https://xihan-web.github.io/xihan.github.io/">
+    <img src="www/webshot/xihan_web_github_io_xihan_github_io_.png" alt="[34-2024303120011](https://xihan-web.github.io/xihan.github.io/)席寒提交的个人作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745111967">
+    <strong>liangyitao223</strong>
+  </a>
+  <a href="https://liangyitao223.github.io/123/">
+    <img src="www/webshot/liangyitao223_github_io_123_.png" alt="[20-2024303120100](https://liangyitao223.github.io/123/)  梁世元作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745137527">
+    <strong>honeymie</strong>
+  </a>
+  <a href="https://honeymie.github.io/">
+    <img src="www/webshot/honeymie_github_io_.png" alt="[27-2024303110050](https://honeymie.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745139010">
+    <strong>2001wzh</strong>
+  </a>
+  <a href="https://2001wzh.github.io/myHomePage/">
+    <img src="www/webshot/2001wzh_github_io_myHomePage_.png" alt="[06-2024303110099](https://2001wzh.github.io/myHomePage/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745144766">
+    <strong>Blitzcrank08</strong>
+  </a>
+  <a href="https://blitzcrank08.github.io/resume/">
+    <img src="www/webshot/blitzcrank08_github_io_resume_.png" alt="[01-2024303120059](https://blitzcrank08.github.io/resume/)
+刘帅作业提交
+使用VSCode+Cline，调用DeepSeek API生成个人简历。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745149830">
+    <strong>maoliao747</strong>
+  </a>
+  <a href="https://maoliao747.github.io/homepage/">
+    <img src="www/webshot/maoliao747_github_io_homepage_.png" alt="[06-2024303120103](https://maoliao747.github.io/homepage/)毛燎">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745178537">
+    <strong>Jun-Feng-Wu</strong>
+  </a>
+  <a href="https://jun-feng-wu.github.io/home/">
+    <img src="www/webshot/jun_feng_wu_github_io_home_.png" alt="[16-2024303120066](https://jun-feng-wu.github.io/home/)吴骏峰">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745191157">
+    <strong>shuaige12581</strong>
+  </a>
+  <a href="https://shuaige12581.github.io/resume/">
+    <img src="www/webshot/shuaige12581_github_io_resume_.png" alt="[01-2024303110023](https://shuaige12581.github.io/resume/) 刘芷骏">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745197385">
+    <strong>zcx5378</strong>
+  </a>
+  <a href="https://zcx5378.github.io/myhomepage/">
+    <img src="www/webshot/zcx5378_github_io_myhomepage_.png" alt="[06-2024303110091](https://zcx5378.github.io/myhomepage/)张晨曦">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745235104">
+    <strong>mikk123123</strong>
+  </a>
+  <a href="https://mikk123123.github.io/1/">
+    <img src="www/webshot/mikk123123_github_io_1_.png" alt="[32-2024303110134](https://mikk123123.github.io/1/)
+米凯凯交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745236080">
+    <strong>Gmyue</strong>
+  </a>
+  <a href="https://gmyue.github.io/html/">
+    <img src="www/webshot/gmyue_github_io_html_.png" alt="[13-2024303110021](https://gmyue.github.io/html/)
+使用VSCode+Cline，调用Google Gemini API生成个人简历。">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745246320">
+    <strong>liangchen693</strong>
+  </a>
+  <a href="https://liangchen693.github.io/lc/">
+    <img src="www/webshot/liangchen693_github_io_lc_.png" alt="[32-2024303120101]( https://liangchen693.github.io/lc/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745254146">
+    <strong>zhongjw110047</strong>
+  </a>
+  <a href="https://zhongjw110047.github.io/zjw.github.io/">
+    <img src="www/webshot/zhongjw110047_github_io_zjw_github_io_.png" alt="[34-2024303110047](https://zhongjw110047.github.io/zjw.github.io/)钟家伟的课程作业
+">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745264043">
+    <strong>yanshuyao123</strong>
+  </a>
+  <a href="https://yanshuyao123.github.io/yanshuyao/">
+    <img src="www/webshot/yanshuyao123_github_io_yanshuyao_.png" alt="[14-2024303120135](https://yanshuyao123.github.io/yanshuyao/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745265802">
+    <strong>chengyonghao-cmd</strong>
+  </a>
+  <a href="https://chengyonghao-cmd.github.io/chengyonghao.github.io/">
+    <img src="www/webshot/chengyonghao_cmd_github_io_chengyonghao_github_io_.png" alt="[34-2024303110071](https://chengyonghao-cmd.github.io/chengyonghao.github.io/)程永豪的课程作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745268350">
+    <strong>wenman123</strong>
+  </a>
+  <a href="https://wenman123.github.io/wenman.github.io/">
+    <img src="www/webshot/wenman123_github_io_wenman_github_io_.png" alt="[34-2024303110035](https://wenman123.github.io/wenman.github.io/)文曼的课程作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745279488">
+    <strong>Zhao-kai111</strong>
+  </a>
+  <a href="https://zhao-kai111.github.io/ZK/">
+    <img src="www/webshot/zhao_kai111_github_io_ZK_.png" alt="[01-2024303120130](https://zhao-kai111.github.io/ZK/) 赵凯提交作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745289871">
+    <strong>SZN1126</strong>
+  </a>
+  <a href="https://szn1126.github.io/SZN/">
+    <img src="www/webshot/szn1126_github_io_SZN_.png" alt="[11-2024303110119](https://szn1126.github.io/SZN/)石镇南课程作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745318945">
+    <strong>Fh2356</strong>
+  </a>
+  <a href="https://fh2356.github.io/fh111.github.io/">
+    <img src="www/webshot/fh2356_github_io_fh111_github_io_.png" alt="[32-2024303120102](https://fh2356.github.io/fh111.github.io/)">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745340572">
+    <strong>15-cyber</strong>
+  </a>
+  <a href="https://15-cyber.github.io/homepage/">
+    <img src="www/webshot/15_cyber_github_io_homepage_.png" alt="[10-2024303120160](https://15-cyber.github.io/homepage/) 范鹏飞课程作业">
+  </a>
+</div>
+<div class="grid-item">
+  <a href="https://github.com/D2RS-2025spring/myHomePages/issues/1#issuecomment-2745353454">
+    <strong>1248879838</strong>
+  </a>
+  <a href="https://1248879838.github.io/lidan/">
+    <img src="www/webshot/1248879838_github_io_lidan_.png" alt="[09-2024303120017](https://1248879838.github.io/lidan/) 李丹">
+  </a>
+</div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    <span class="math-inline">\(window\)\.scroll\(function\(\) \{
+if \(</span>(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
+        // 在静态页面中，无法实现动态加载更多内容
+        // 这里可以添加一些提示信息，例如“已加载所有内容”
+      }
+    });
+  });
+</script>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
