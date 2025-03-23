@@ -8,6 +8,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(tidyverse)
 library(lubridate)
 library(httr)
+library(htmltools)
 
 # 读取数据
 data <- read_csv("github_issue_comments.csv", show_col_types = FALSE)
@@ -27,7 +28,7 @@ generate_screenshot_list <- function(data) {
   screenshot_list <- lapply(1:nrow(data), function(i) {
     item <- data[i, ]
     htmltools::tags$div(
-     htmltools::tags$a(htmltools::tags$b(item$author, herf = item$content_url)),
+     htmltools::tags$a(strong(item$author), href = item$content_url),
       if (!is.null(item$link)) {
         htmltools::tags$a(
           href = item$link,
@@ -66,19 +67,20 @@ screenshot_list_html <- generate_screenshot_list(sorted_data)
   .grid-item img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain; /* 修改这里 */
+    object-position: top; /* 修改这里 */
     transition: transform 0.3s ease; /* 添加过渡效果 */
   }
   .grid-item img:hover {
     transform: scale(1.05); /* 鼠标悬停时放大图片 */
   }
-  .grid-item h4 a {
+  .grid-item a {
     text-decoration: none; /* 移除默认下划线 */
     color: #333; /* 设置字体颜色 */
     font-weight: 600; /* 设置字体粗细 */
     transition: color 0.3s ease; /* 添加颜色过渡效果 */
   }
-  .grid-item h4 a:hover {
+  .grid-item a:hover {
     color: #007bff; /* 鼠标悬停时改变字体颜色 */
     margin-top: 0; /* 移除默认的外边距 */
     margin-bottom: 1em; /* 添加底部外边距 */

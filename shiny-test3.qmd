@@ -13,6 +13,8 @@
 首先，我们需要安装和加载一些 R 包，用于获取 GitHub Issue 数据、生成网页截图、处理数据等。
 
 ```{r}
+#| eval: false
+
 # 安装和加载必要的 R 包
 if (!require("gh", quietly = TRUE)) install.packages("gh")
 if (!require("webshot2", quietly = TRUE)) install.packages("webshot2")
@@ -45,6 +47,8 @@ library(jsonlite)
 
 
 ```{r}
+#| eval: false
+
 get = function(content, pattern){
     if (!str_detect(content, pattern)) {
         warning(glue::glue("{content} 中未检测到: {pattern}"))
@@ -142,6 +146,8 @@ parse_issue = function(issue){
 - 将这些结果合并在一起。
 
 ```{r}
+#| eval: false
+
 # 指定仓库
 repo_owner <- "D2RS-2025spring"
 repo_name <- "myHomePages"

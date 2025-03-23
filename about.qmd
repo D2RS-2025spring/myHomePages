@@ -1,12 +1,13 @@
-# 处理回复
+# About
 
-创建一个R脚本，用于从 GitHub Issue [#1](https://github.com/D2RS-2025spring/myHomePages/issues/1) 中提取回复，整理为表格，并对内容中的链接生成网页截图。
+创建一个 R 脚本，用于从 GitHub Issue [#1](https://github.com/D2RS-2025spring/myHomePages/issues/1) 中提取回复，整理为表格，并对内容中的链接生成网页截图。
 
 ## 准备工作
 
 首先，我们需要安装并加载一些必要的R包，包括 `gh`、`webshot2`、`dplyr`、`stringr`、`tibble`、`httr` 和 `jsonlite`。如果你尚未安装这些包，可以运行以下代码来安装它们：
 
 ```{r}
+#| eval: false
 # 安装必要的包（如果尚未安装）
 if (!require("gh", quietly = TRUE)) install.packages("gh")
 if (!require("webshot2", quietly = TRUE)) install.packages("webshot2")
@@ -49,6 +50,7 @@ if (!dir.exists("webshot")) {
 
 
 ```{r}
+#| eval: false
 # 指定仓库和Issue编号
 # 请替换为你需要爬取的仓库
 repo_owner <- "D2RS-2025spring"
@@ -72,6 +74,7 @@ issue_comments <- gh::gh(
 在获取 ISSUE comments 的方法中，并不会包含第一条的评论（即 Issue 的标题和内容），所以我们需要单独获取 Issue 的标题和内容，打印原始 Issue 的标题和内容，以便了解 Issue 的背景信息。
 
 ```{r}
+#| eval: false
 # 获取原始issue内容
 issue_data <- gh::gh(
   "GET /repos/{owner}/{repo}/issues/{issue_number}",
@@ -98,6 +101,7 @@ cat(issue_data$body, "\n")
 
 
 ```{r}
+#| eval: false
 get = function(content, pattern){
     matches <- str_extract_all(content, pattern)[[1]]
     matches <- unique(matches)
@@ -161,6 +165,8 @@ create_webshot = function(link, verbose = TRUE) {
 利用 `lapply` 函数将评论整理为一个列表，然后使用 `bind_rows` 函数将列表转换为 tibble，方便后续处理。
 
 ```{r}
+#| eval: false
+
 # 创建一个列表来存储评论信息
 comments_list = lapply(issue_comments, function(comment) {
     # 提取评论信息
@@ -186,8 +192,6 @@ comments_list = lapply(issue_comments, function(comment) {
 
 # 将列表转换为 tibble
 comments_df = bind_rows(comments_list)
-
-comments_df
 ```
 
 `comments_df` 是一个数据框，包含了评论的作者、内容、评论链接和时间。
@@ -198,6 +202,7 @@ comments_df
 最后，将整理好的评论数据保存为CSV文件，并输出处理结果。对于存在多个链接的评论（），将多个链接用分号分隔，合并为一个评论。
 
 ```{r}
+#| eval: false
 # 保存结果到CSV
 write.csv(comments_df, "github_issue_comments.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
