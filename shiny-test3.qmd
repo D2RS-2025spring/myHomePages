@@ -1,0 +1,160 @@
+# 网页秀和投票
+
+用 R 实现下面的功能：
+
+1. 读取 GitHub Issues；
+2. 使用网页截图生成一个分页的展示栏，提供3种排序方式，按照发布时间、按照id、按照点赞数；
+3. 基于 GitHub ISSUE 的点赞功能实现点赞。每个网页截图的点赞添加到content_url所指的评论上。
+
+接下来，让我们一步一步地用 R 实现这个功能。
+
+## 安装和加载必要的 R 包
+
+首先，我们需要安装和加载一些 R 包，用于获取 GitHub Issue 数据、生成网页截图、处理数据等。
+
+```{r}
+# 安装和加载必要的 R 包
+if (!require("gh", quietly = TRUE)) install.packages("gh")
+if (!require("webshot2", quietly = TRUE)) install.packages("webshot2")
+if (!require("dplyr", quietly = TRUE)) install.packages("dplyr")
+if (!require("stringr", quietly = TRUE)) install.packages("stringr")
+if (!require("tibble", quietly = TRUE)) install.packages("tibble")
+if (!require("httr", quietly = TRUE)) install.packages("httr")
+if (!require("jsonlite", quietly = TRUE)) install.packages("jsonlite")
+
+# 加载 R 包
+library(gh)
+library(webshot2)
+library(dplyr)
+library(stringr)
+library(tibble)
+library(httr)
+library(jsonlite)
+```
+
+
+## 创建辅助函数
+
+`get()` 函数用于从评论内容中提取匹配的内容。如果没有匹配，会打印警告；如果有多个匹配，会保留第一个；如果只有一个匹配，直接返回。
+
+`get_id()` 这里使用的正则表达式为 `(?<!\\d)\\d{13}(?!\\d)`，可以匹配 13 位数字，前后不是数字的情况。其中 `(?<!\\d)` 表示前面不是数字，`\\d{13}` 表示匹配 13 位数字，`(?!\\d)` 表示后面不是数字。
+
+`get_link()` 这里使用的正则表达式为 `https?://[^\\s()<>\"\\[\\]]+`，可以匹配直接 URL。其中 `https?://` 表示匹配 `http://` 或 `https://`，`[^\\s()<>\"\\[\\]]+` 表示匹配除空格、括号、尖括号、引号和方括号之外的字符。
+
+`create_webshot()` 用于生成网页截图，如果文件已经存在且大小大于 1 kb，则跳过。如果文件不存在或大小小于 1 kb，则尝试生成网页截图。如果生成成功，则打印成功信息；如果生成失败，则打印失败信息。
+
+
+```{r}
+get = function(content, pattern){
+    if (!str_detect(content, pattern)) {
+        warning(glue::glue("{content} 中未检测到: {pattern}"))
+        return(NULL)
+    }
+    matches <- str_extract_all(content, pattern)[[1]]
+    matches <- unique(matches)
+    match <- NULL
+    if (length(matches) > 1) {
+        # 如果有多个匹配，只取第一个
+        match <- matches[1]
+        message(glue::glue("{content} 中检测到多个匹配: `{pattern}`。保留第一个。"))
+    } else {
+        # 如果只有一个匹配，直接取出
+        match = matches[1]
+    }
+    return(match)
+}
+
+get_id = function(content){
+    get(content, pattern = "(?<!\\d)\\d{13}(?!\\d)")
+}
+
+get_link = function(content){
+    get(content, pattern = "https?://[^\\s()<>\"\\[\\]]+")
+}
+
+create_webshot = function(link, verbose = TRUE) {
+    # valid link
+    if (is.null(link) || !str_detect(link, "^https?://")) {
+        warning(glue::glue("Invalid link: {link}"))
+        return(NULL)
+    }
+
+    # 创建一个安全的文件名
+    safe_filename <- paste0("www/webshot/", 
+                            str_replace_all(gsub("https?://", "", link), "[^a-zA-Z0-9]", "_"), 
+                            ".png")
+    
+    # 如果文件已经存在且大小大于 1 kb，跳过
+    if (file.exists(safe_filename) & file.size(safe_filename) > 1000) {
+        if (verbose) message(sprintf("跳过截图: %s (文件已存在)\n", link))
+    } else {
+        # 尝试截图
+        tryCatch({
+            webshot2::webshot(url = link, 
+                                file = safe_filename, 
+                                delay = 5)
+            if (verbose) message(sprintf("成功截图: %s\n", link))
+        }, error = function(e) {
+            if (verbose) warning(sprintf("截图失败: %s, 错误: %s\n", link, e$message))
+        })
+    }
+    
+    safe_filename = gsub("www/", "", safe_filename)
+    return(safe_file
+}
+
+parse_issue = function(issue){
+    # 提取评论信息
+    user_id = issue$user$id
+    user_name = issue$user$login
+    content = str_c(issue$title, issue$body, sep = "\n") # 标题和内容合并
+    content_url = issue$html_url
+    time = issue$created_at
+    student_id = get_id(content)
+    student_homepage_link = get_link(content)
+    # student_homepage_webshot = create_webshot(student_homepage_link, verbose = FALSE)
+    reaction_url = issue$reactions$url
+    reaction_total_count = issue$reactions$total_count
+
+    # 返回一个 tibble
+    tibble(
+        user_name = user_name,
+        user_id = user_id,
+        content = content,
+        content_url = content_url,
+        time = time,
+        student_id = student_id,
+        student_homepage_link = student_homepage_link,
+        # student_homepage_webshot = student_homepage_webshot,
+        reaction_url = reaction_url,
+        reaction_total_count = reaction_total_count
+    )
+}
+
+```
+
+## 获取 GitHub Issue 数据
+
+有些同学不按要求提交，新开了 Issue 提交作业，甚至在 Issue 中回复分开提交链接和学号，给处理数据带来了很大困难。
+
+- 获取所有 Issue；
+- 获取所有 Issue 的 comments；
+- 将这些结果合并在一起。
+
+```{r}
+# 指定仓库
+repo_owner <- "D2RS-2025spring"
+repo_name <- "myHomePages"
+
+# 使用 GitHub API 获取指定仓库的所有 Issue 数据
+issues <- gh::gh(
+  "GET /repos/{owner}/{repo}/issues",
+  owner = repo_owner,
+  repo = repo_name
+)
+
+issue_data = lapply(issues, parse_issue)  |>  bind_rows(issue_data)
+
+```
+
+

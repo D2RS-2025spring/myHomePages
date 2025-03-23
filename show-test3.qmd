@@ -1,0 +1,112 @@
+# 网页秀
+
+创建网页截图，并展示在网页上。
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(lubridate)
+library(httr)
+
+# 读取数据
+data <- read_csv("github_issue_comments.csv", show_col_types = FALSE)
+
+# 转换时间格式
+data$time <- ymd_hms(data$time)
+
+data <- data |> 
+  mutate(likes = 0)
+
+# 排序数据
+sorted_data <- data %>%
+  arrange(time) # 默认按时间排序
+
+# 生成截图列表 HTML
+generate_screenshot_list <- function(data) {
+  screenshot_list <- lapply(1:nrow(data), function(i) {
+    item <- data[i, ]
+    htmltools::tags$div(
+     htmltools::tags$a(htmltools::tags$b(item$author, herf = item$content_url)),
+      if (!is.null(item$link)) {
+        htmltools::tags$a(
+          href = item$link,
+          if (!is.null(item$screenshot_path[[1]])) {
+            path = paste0("www/", item$screenshot_path[[1]])
+            htmltools::tags$img(src = path, alt = item$content)
+          }
+        )
+      },
+      class = "grid-item"
+    )
+  })
+  htmltools::tagList(screenshot_list)
+}
+
+screenshot_list_html <- generate_screenshot_list(sorted_data)
+```
+
+```{=html}
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 300px;
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 5em;
+    max-width: 1200px;
+    margin: 5em auto 0 auto;
+  }
+  .grid-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+  }
+  .grid-item img:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大图片 */
+  }
+  .grid-item h4 a {
+    text-decoration: none; /* 移除默认下划线 */
+    color: #333; /* 设置字体颜色 */
+    font-weight: 600; /* 设置字体粗细 */
+    transition: color 0.3s ease; /* 添加颜色过渡效果 */
+  }
+  .grid-item h4 a:hover {
+    color: #007bff; /* 鼠标悬停时改变字体颜色 */
+    margin-top: 0; /* 移除默认的外边距 */
+    margin-bottom: 1em; /* 添加底部外边距 */
+  }
+  .floating-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1px;
+    text-align: center;
+    z-index: 1000;
+  }
+</style>
+
+<div class="grid-container">
+  `r as.character(screenshot_list_html)`
+</div>
+
+<script>
+  $(document).ready(function() {
+    <span class="math-inline">\(window\)\.scroll\(function\(\) \{
+if \(</span>(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
+        // 在静态页面中，无法实现动态加载更多内容
+        // 这里可以添加一些提示信息，例如“已加载所有内容”
+      }
+    });
+  });
+</script>
+```

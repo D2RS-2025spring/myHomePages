@@ -72,8 +72,6 @@ issue_comments <- gh::gh(
 在获取 ISSUE comments 的方法中，并不会包含第一条的评论（即 Issue 的标题和内容），所以我们需要单独获取 Issue 的标题和内容，打印原始 Issue 的标题和内容，以便了解 Issue 的背景信息。
 
 ```{r}
-# 打印原始issue内容
-
 # 获取原始issue内容
 issue_data <- gh::gh(
   "GET /repos/{owner}/{repo}/issues/{issue_number}",
@@ -87,6 +85,77 @@ cat(issue_data$title, "\n")
 cat(issue_data$body, "\n")
 ```
 
+
+## 创建辅助函数
+
+`get()` 函数用于从评论内容中提取匹配的内容。如果没有匹配，会打印警告；如果有多个匹配，会保留第一个；如果只有一个匹配，直接返回。
+
+`get_id()` 这里使用的正则表达式为 `(?<!\\d)\\d{13}(?!\\d)`，可以匹配 13 位数字，前后不是数字的情况。其中 `(?<!\\d)` 表示前面不是数字，`\\d{13}` 表示匹配 13 位数字，`(?!\\d)` 表示后面不是数字。
+
+`get_link()` 这里使用的正则表达式为 `https?://[^\\s()<>\"\\[\\]]+`，可以匹配直接 URL。其中 `https?://` 表示匹配 `http://` 或 `https://`，`[^\\s()<>\"\\[\\]]+` 表示匹配除空格、括号、尖括号、引号和方括号之外的字符。
+
+`create_webshot()` 用于生成网页截图，如果文件已经存在且大小大于 1 kb，则跳过。如果文件不存在或大小小于 1 kb，则尝试生成网页截图。如果生成成功，则打印成功信息；如果生成失败，则打印失败信息。
+
+
+```{r}
+get = function(content, pattern){
+    matches <- str_extract_all(content, pattern)[[1]]
+    matches <- unique(matches)
+    match <- NULL
+    if (length(matches) < 1) {
+        # 如果没有匹配，打印警告
+        warning(glue::glue("{content} 中未检测到: {pattern}"))
+    } else if (length(matches) > 1) {
+        # 如果有多个匹配，只取第一个
+        match <- matches[1]
+        message(glue::glue("{content} 中检测到多个匹配: `{pattern}`。保留第一个。"))
+    } else {
+        # 如果只有一个匹配，直接取出
+        match = matches[1]
+    }
+    return(match)
+}
+
+get_id = function(content){
+    get(content, pattern = "(?<!\\d)\\d{13}(?!\\d)")
+}
+
+get_link = function(content){
+    get(content, pattern = "https?://[^\\s()<>\"\\[\\]]+")
+}
+
+create_webshot = function(link, verbose = TRUE) {
+    # valid link
+    if (is.null(link) || !str_detect(link, "^https?://")) {
+        warning(glue::glue("Invalid link: {link}"))
+        return(NULL)
+    }
+
+    # 创建一个安全的文件名
+    safe_filename <- paste0("www/webshot/", 
+                            str_replace_all(gsub("https?://", "", link), "[^a-zA-Z0-9]", "_"), 
+                            ".png")
+    
+    # 如果文件已经存在且大小大于 1 kb，跳过
+    if (file.exists(safe_filename) & file.size(safe_filename) > 1000) {
+        if (verbose) message(sprintf("跳过截图: %s (文件已存在)\n", link))
+    } else {
+        # 尝试截图
+        tryCatch({
+            webshot2::webshot(url = link, 
+                                file = safe_filename, 
+                                delay = 5)
+            if (verbose) message(sprintf("成功截图: %s\n", link))
+        }, error = function(e) {
+            if (verbose) warning(sprintf("截图失败: %s, 错误: %s\n", link, e$message))
+        })
+    }
+    
+    safe_filename = gsub("www/", "", safe_filename)
+    return(safe_filename)
+}
+```
+
 ## 整理评论
 
 利用 `lapply` 函数将评论整理为一个列表，然后使用 `bind_rows` 函数将列表转换为 tibble，方便后续处理。
@@ -94,15 +163,25 @@ cat(issue_data$body, "\n")
 ```{r}
 # 创建一个列表来存储评论信息
 comments_list = lapply(issue_comments, function(comment) {
-  tibble(
-    author = comment$user$login,
-    content = comment$body,
-    content_url = comment$html_url,
-    time = comment$created_at,
-    id = NA,
-    links = NA,
-    screenshot_paths = NA
-  )
+    # 提取评论信息
+    author = comment$user$login
+    content = comment$body
+    content_url = comment$html_url
+    time = comment$created_at
+    id = get_id(comment$body)
+    link = get_link(comment$body)
+    screenshot_path = create_webshot(link, verbose = FALSE)
+
+    # 返回一个 tibble
+    tibble(
+        author = author,
+        content = content,
+        content_url = content_url,
+        time = time,
+        id = id,
+        link = link,
+        screenshot_path = screenshot_path
+    )
 })
 
 # 将列表转换为 tibble
@@ -113,162 +192,19 @@ comments_df
 
 `comments_df` 是一个数据框，包含了评论的作者、内容、评论链接和时间。
 
-## 提取评论中的学号
-
-从评论内容中提取学号。这里使用了正则表达式来匹配学号，然后将提取的学号保存到数据框中。
-
-这里使用的正则表达式为 `(?<!\\d)\\d{13}(?!\\d)`，可以匹配 13 位数字，前后不是数字的情况。其中 `(?<!\\d)` 表示前面不是数字，`\\d{13}` 表示匹配 13 位数字，`(?!\\d)` 表示后面不是数字。
-
-```{r}
-# 提取每条评论中的学号
-for (i in 1:nrow(comments_df)) {
-  # 使用正则表达式提取学号
-  # 这个模式可以匹配学号
-  id_pattern <- "(?<!\\d)\\d{13}(?!\\d)"
-  matches <- str_extract_all(comments_df$content[i], id_pattern)[[1]]
-  matches <- unique(matches)
-  id <- NA
-  if (length(matches) < 1) {
-    # 如果没有匹配，打印警告
-    warning(glue::glue("评论 {i} 中未检测到学号: {comments_df$content[i]}"))
-  } else if (length(matches) > 1) {
-    # 如果有多个匹配，只取第一个
-    id <- matches[1]
-    message(glue::glue("评论 {i} 中有多个学号匹配: `{comments_df$content[i]}`。只取第一个: {id}"))
-  } else {
-    # 如果只有一个匹配，直接取出
-    id = matches[1]
-  }
-  # 更新数据框
-  comments_df$id[[i]]<- id
-}
-
-# 检查学号提取是否正确
-comments_df
-```
-
-
-## 提取评论中的链接
-
-从评论内容中提取可用的链接。这里使用了正则表达式来匹配链接，包括 Markdown 风格的链接和直接 URL。然后将提取的链接保存到数据框中。
-
-这里使用的正则表达式为 `https?://[^\\s()<>\"\\[\\]]+|\\(https?://[^\\s()<>\"\\[\\]]+\\)|\\[.*?\\]\\(https?://[^\\s()<>\"\\[\\]]+\\)`，可以匹配 Markdown 风格的链接和直接 URL。其中，`https?://[^\\s()<>\"\\[\\]]+` 匹配直接 URL，`\\(https?://[^\\s()<>\"\\[\\]]+\\)` 匹配圆括号中的链接，`\\[.*?\\]\\(https?://[^\\s()<>\"\\[\\]]+\\)` 匹配 Markdown 风格的链接。
-
-```{r}
-# 提取每条评论中的链接
-for (i in 1:nrow(comments_df)) {
-  # 使用正则表达式提取链接
-  # 这个模式可以匹配Markdown风格的链接和直接URL
-  url_pattern <- "https?://[^\\s()<>\"\\[\\]]+|\\(https?://[^\\s()<>\"\\[\\]]+\\)|\\[.*?\\]\\(https?://[^\\s()<>\"\\[\\]]+\\)"
-  matches <- str_extract_all(comments_df$content[i], url_pattern)[[1]]
-  
-  # 清理链接（从Markdown格式中提取实际URL）
-  cleaned_links <- character()
-  for (match in matches) {
-    # 如果是Markdown格式的链接 [text](url)
-    if (str_detect(match, "\\[.*?\\]\\(.*?\\)")) {
-      url <- str_extract(match, "(?<=\\().*?(?=\\))")
-      cleaned_links <- c(cleaned_links, url)
-    } 
-    # 如果是圆括号中的链接 (url)
-    else if (str_detect(match, "^\\(.*?\\)$")) {
-      url <- str_sub(match, 2, -2)
-      cleaned_links <- c(cleaned_links, url)
-    } 
-    # 直接URL
-    else {
-      cleaned_links <- c(cleaned_links, match)
-    }
-  }
-  
-  # 过滤掉非HTTP链接
-  valid_links <- cleaned_links[str_detect(cleaned_links, "^https?://")]
-  
-  # 更新数据框
-  comments_df$links[i] <- list(valid_links)
-  
-}
-```
-
-
-检查链接提取是否正确，并打印出每条评论中的内容。
-
-```{r}
-# 没有提取到链接的评论链接
-comments_df |> 
-    rowwise() |>
-    filter(length(links) == 0) |>
-    select(author, content)
-```
-
-
-## 生成网页截图
-
-使用 `webshot2` 包生成评论中的链接的网页截图，并将截图保存到 `webshot` 文件夹中。然后将截图的文件路径添加到数据框中。
-
-```{r}
-# 使用webshot2包生成网页截图
-for (i in 1:nrow(comments_df)) {
-  valid_links <- comments_df$links[[i]]
-  # 准备保存截图路径
-  screenshot_paths <- character()
-  
-  # 为每个有效链接生成截图
-  if (length(valid_links) > 0) {
-    for (j in 1:length(valid_links)) {
-      link <- valid_links[j]
-      # 创建一个安全的文件名
-      safe_filename <- paste0("webshot/", 
-                               i, "_", j, "_", 
-                               str_replace_all(gsub("https?://", "", link), "[^a-zA-Z0-9]", "_"), 
-                               ".png")
-      
-      # 如果文件已经存在，跳过
-        if (file.exists(safe_filename) & file.size(safe_filename) > 1000) {
-            message(sprintf("跳过截图: %s (文件已存在)\n", link))
-            screenshot_paths <- c(screenshot_paths, safe_filename)
-            next
-        }
-      
-      # 尝试截图
-      tryCatch({
-        webshot2::webshot(url = link, 
-                          file = safe_filename, 
-                          delay = 5)
-        screenshot_paths <- c(screenshot_paths, safe_filename)
-        # message(sprintf("成功截图: %s\n", link))
-      }, error = function(e) {
-        warning(sprintf("截图失败: %s, 错误: %s\n", link, e$message))
-        screenshot_paths <- c(screenshot_paths, NA)
-      })
-    }
-  }
-  
-  # 更新截图路径
-  comments_df$screenshot_paths[[i]] <- list(screenshot_paths)
-}
-```
-
 
 ## 保存结果
 
-最后，将整理好的评论数据保存为CSV文件，并输出处理结果。对于存在多个链接的评论（有些同学提交了多个版本），将多个链接用分号分隔，合并为一个评论。
+最后，将整理好的评论数据保存为CSV文件，并输出处理结果。对于存在多个链接的评论（），将多个链接用分号分隔，合并为一个评论。
 
 ```{r}
-# 将 list 转换为字符向量
-final_df <- comments_df %>%
-  mutate(
-    links = sapply(links, function(x) paste(x, collapse = "; ")),
-    screenshot_paths = sapply(screenshot_paths, function(x) paste(x, collapse = "; "))
-  )
-
 # 保存结果到CSV
-write.csv(final_df, "github_issue_comments.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(comments_df, "github_issue_comments.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 # 输出结果
 cat("处理完成! 共处理了", nrow(comments_df), "条评论\n")
 cat("结果已保存到 github_issue_comments.csv\n")
-print(final_df)
+print(comments_df)
 ```
 
 
@@ -286,3 +222,72 @@ print(final_df)
 * 将截图保存在 `webshot` 文件夹中
 * 将截图的文件路径添加到表格中
 * 将结果保存为CSV文件
+
+
+## 附加
+
+利用md5检测当前目录下面的 png 文件，删掉重复的。然后将 png 文件重命名，去掉文件名开始的 `\d+_\d+_`。
+
+
+可以使用 R 处理当前目录下的 PNG 文件，完成以下任务：
+
+1. **计算 MD5 哈希值并删除重复的 PNG 文件**  
+2. **重命名 PNG 文件，去掉文件名开头的 `\d+_\d+_`**
+
+以下是 R 代码：
+
+```{r}
+#| eval: false
+library(digest)
+
+# 计算文件 MD5 哈希值
+get_md5 = function(file_path) {
+  digest(file_path, algo = "md5", file = TRUE)
+}
+
+# 删除重复的 PNG 文件
+remove_duplicates = function(directory) {
+  files = list.files(directory, pattern = "\\.png$", full.names = TRUE, ignore.case = TRUE)
+  seen_hashes = list()
+  
+  for (file in files) {
+    file_hash = get_md5(file)
+    
+    if (file_hash %in% names(seen_hashes)) {
+      message("删除重复文件: ", file)
+      file.remove(file)
+    } else {
+      seen_hashes[[file_hash]] = file
+    }
+  }
+}
+
+# 重命名 PNG 文件，去掉开头的 \d+_\d+_
+rename_files = function(directory) {
+  files = list.files(directory, pattern = "\\.png$", full.names = TRUE, ignore.case = TRUE)
+  
+  for (file in files) {
+    filename = basename(file)
+    new_name = sub("^\\d+_\\d+_", "", filename)
+    
+    if (new_name != filename) {
+      new_path = file.path(dirname(file), new_name)
+      message("重命名: ", file, " -> ", new_path)
+      file.rename(file, new_path)
+    }
+  }
+}
+
+# 运行
+current_directory = "webshot"
+remove_duplicates(current_directory)
+rename_files(current_directory)
+```
+
+### 说明：
+
+
+- `get_md5(file_path)`: 计算 PNG 文件的 MD5 哈希值。
+- `remove_duplicates(directory)`: 通过 MD5 识别重复 PNG 文件并删除。
+- `rename_files(directory)`: 通过正则表达式 `^\\d+_\\d+_` 处理文件名，去掉前缀。
+
