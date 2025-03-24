@@ -27,8 +27,8 @@ library(httr)
 library(jsonlite)
 
 # 创建webshot文件夹（如果不存在）
-if (!dir.exists("webshot")) {
-  dir.create("webshot")
+if (!dir.exists("www/webshot")) {
+  dir.create("www/webshot", recursive = TRUE)
 }
 ```
 
