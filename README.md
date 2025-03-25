@@ -11,3 +11,8 @@
 ## 创建个人主页秀页面
 
 详见 [About Homepage Show](https://d2rs-2025spring.github.io/myHomePages/about.html)。
+
+## 创建一个动态页面
+
+可以使用 Shiny 创建一个动态页面，支持点赞功能。思路在 [这里](shiny-test3.qmd) 中。我应该没时间写了，有兴趣的同学可以试试。
+
