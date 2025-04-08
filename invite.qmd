@@ -1,0 +1,88 @@
+# 批量邀请成员加入组织
+
+自 `github_issue_comments.csv` 中读取数据，将 `author` 列中的 GitHub 用户都邀请到 D2RS-2025spring 组织中。用 R 和 gh 来完成。
+
+## 登录
+
+请注意，执行这些命令需要适当的权限。确保你已经登录到具有邀请权限的GitHub账户。
+在开始之前，请确保你已经登录到 GitHub CLI，并且授予管理组织的权限。可以使用以下命令进行登录：
+
+```bash
+gh auth refresh -h github.com -s admin:org
+```
+
+## 生成命令
+
+从 `github_issue_comments.csv` 文件中读取评论数据，并提取唯一的 GitHub 用户名。我们将使用 R 语言来处理 CSV 文件。
+
+```{r}
+# 读取CSV文件
+library(readr)
+comments <- read_csv("github_issue_comments.csv")
+
+# 提取唯一的GitHub用户名
+github_users <- unique(comments$author)
+
+# 打印用户名列表
+print(github_users)
+
+# 生成gh命令
+gh_commands <- paste0("gh api -X PUT /orgs/D2RS-2025spring/memberships/", github_users, " -f role=member")
+```
+
+现在我们有了 GitHub 用户名列表和相应的 gh 命令。接下来，我们需要执行这些命令来邀请用户加入组织。
+
+## 执行命令
+
+现在可以调用 `system()` 函数来执行这些命令。请注意，这可能需要一些时间，因为每个命令都需要单独执行。为了避免 API 限制，我们在每次调用之间添加了延迟。与此同时，还需要处理返回的结果，如果 `state` 为 `pending`，则表示邀请已成功发送；如果为 `already_member`，则表示用户已经是组织成员；如果为 `not_found`，则表示用户不存在或用户名错误。
+
+```{r}
+# 执行命令并处理结果
+# 安装和加载必要的包
+if(!requireNamespace("ratelimitr", quietly = TRUE)) {
+  install.packages("ratelimitr")
+}
+if(!requireNamespace("jsonlite", quietly = TRUE)) {
+  install.packages("jsonlite")
+}
+library(ratelimitr)
+library(jsonlite)
+
+# 定义执行命令的函数
+exec_command <- function(cmd) {
+  tryCatch({
+    result <- system(cmd, intern = TRUE) |> jsonlite::fromJSON()
+    return(result)
+  }, error = function(e) {
+    return(NULL)
+  })
+}
+
+# 添加重试逻辑的函数
+retry_exec <- function(cmd, max_retries = 3) {
+  for (i in 1:max_retries) {
+    result <- exec_command(cmd)
+    if (!is.null(result)) {
+      return(result)
+    }
+    Sys.sleep(1) # 在重试前等待1秒
+  }
+  return(NULL) # 达到最大重试次数后返回NULL
+}
+
+# 使用ratelimitr限制API调用频率（每分钟60次）
+rate_limited_retry <- limit_rate(retry_exec, rate(n = 60, period = 60))
+
+library(pbapply)
+
+# 执行命令并处理结果
+responses <- pblapply(gh_commands, function(cmd) {
+  rate_limited_retry(cmd)
+})
+
+# 检查返回的状态
+states <- sapply(responses, function(x) x$state)
+
+# 打印状态
+table(states) |> barplot()
+```

@@ -1,0 +1,8 @@
+# 检查作业提交情况
+
+```{r}
+library(readr)
+library(dplyr)
+score_test3 = read_csv("github_issue_comments.csv") |> select(author, id)  |> mutate(score = 85, extra = list(NULL)) 
+write_csv(score_test3, "score-test3.csv")
+```
